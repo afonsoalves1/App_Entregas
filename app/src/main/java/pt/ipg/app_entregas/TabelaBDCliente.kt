@@ -3,7 +3,7 @@ package pt.ipg.app_entregas
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
 
-class TabelaBDCliente (db: SQLiteDatabase) : TabelaBDCliente(db, NOME) {
+class TabelaBDCliente (db: SQLiteDatabase) : TabelaBD(db, NOME) {
     override fun cria() {
         db.execSQL("CREATE TABLE $nome (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
                 " $Nome TEXT NOT NULL, $Mail TEXT NOT NULL, $Telefone TEXT NOT NULL, $Morada TEXT NOT NULL," +
@@ -19,4 +19,4 @@ class TabelaBDCliente (db: SQLiteDatabase) : TabelaBDCliente(db, NOME) {
         const val Cliente_ID = "ClienteId"
 
     }
-}
+    }

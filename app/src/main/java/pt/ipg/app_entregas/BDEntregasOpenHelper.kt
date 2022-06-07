@@ -4,7 +4,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class BDEntregasOpenHelper (context: Context?) : SQLiteOpenHelper(context, BDLivrosOpenHelper.NOME, null, BDLivrosOpenHelper.VERSAO) {
+class BDEntregasOpenHelper (context: Context?) : SQLiteOpenHelper(context, BDEntregasOpenHelper.NOME, null, BDEntregasOpenHelper.VERSAO) {
 
         /**
          * Called when the database is created for the first time. This is where the
@@ -50,4 +50,3 @@ class BDEntregasOpenHelper (context: Context?) : SQLiteOpenHelper(context, BDLiv
             private const val VERSAO = 1
         }
     }
-}
