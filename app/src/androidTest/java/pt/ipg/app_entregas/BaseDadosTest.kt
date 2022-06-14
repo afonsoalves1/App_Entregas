@@ -29,7 +29,13 @@ class BaseDadosTest {
         assertNotEquals(-1, Produto.id)
     }
 
+    private fun insereEntrega(db: SQLiteDatabase, Entrega: Entrega) {
+        Entrega.id = TabelaBDEntrega(db).insert(Entrega.toContentValues())
+        assertNotEquals(-1, Entrega.id)
+    }
+
     
+
 
 
 
