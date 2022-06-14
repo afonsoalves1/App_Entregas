@@ -39,6 +39,10 @@ class BaseDadosTest {
         assertNotEquals(-1, Cliente.id)
     }
 
+    @Before
+    fun apagaBaseDados() {
+        appContext().deleteDatabase(BDEntregasOpenHelper.NOME)
+    }
 
 
 }
