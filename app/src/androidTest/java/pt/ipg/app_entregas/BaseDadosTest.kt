@@ -34,9 +34,10 @@ class BaseDadosTest {
         assertNotEquals(-1, Entrega.id)
     }
 
-    
-
-
+    private fun insereCliente(db: SQLiteDatabase, Cliente: Cliente) {
+        Cliente.id = TabelaBDEntrega(db).insert(Cliente.toContentValues())
+        assertNotEquals(-1, Cliente.id)
+    }
 
 
 
