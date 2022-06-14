@@ -44,5 +44,16 @@ class BaseDadosTest {
         appContext().deleteDatabase(BDEntregasOpenHelper.NOME)
     }
 
+    @Test
+    fun consegueAbrirBaseDados() {
+        val openHelper = BDEntregasOpenHelper(appContext())
+        val db = openHelper.readableDatabase
+
+        assertTrue(db.isOpen)
+
+        db.close()
+    }
+
+
 
 }
