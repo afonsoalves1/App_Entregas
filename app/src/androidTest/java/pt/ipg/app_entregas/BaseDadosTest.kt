@@ -1,6 +1,7 @@
 package pt.ipg.app_entregas
 
 import android.database.sqlite.SQLiteDatabase
+import android.provider.BaseColumns
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Assert.*
@@ -62,36 +63,72 @@ class BaseDadosTest {
     @Test
     fun consegueInserirProduto() {
         val db = getWritableDatabase()
-
         insereProduto(db, Produto("Caixas", "Fragil"))
-
         db.close()
-
     }
 
     @Test
     fun consegueInserirCliente() {
         val db = getWritableDatabase()
-
         insereCliente(db, Cliente("Afonso", "966666666", "Guarda"))
-
         db.close()
     }
 
     @Test
     fun consegueInserirLocalidade() {
         val db = getWritableDatabase()
-
         insereLocalidade(db, Localidade("Guarda"))
-
         db.close()
     }
 
     @Test
     fun consegueInserirEntrega(){
         val db = getWritableDatabase()
+        insereEntrega(db, Entrega("Ze","Paletes",5,"15/06/2022","Guarda",3 ))
+        db.close()
+    }
 
-        insereEntrega(db, Entrega("Ze","Paletes",5,"15/06/2022",3 ))
+    @Test
+    fun consegueAlterarProduto() {
+
+        val db = getWritableDatabase()
+
+        val produto = Produto("Caixas", "Fragil")
+        insereProduto(db, produto)
+
+        produto.nome = "Armarios"
+        produto.Descricao = "Não é fragil"
+
+        val registosAlterados = TabelaBDProduto(db).update(
+            produto.toContentValues(),
+            "${BaseColumns._ID}= ?",
+            arrayOf("${produto.id}"))
+
+        assertEquals(1, registosAlterados)
+
+        db.close()
+    }
+    @Test
+    fun consegueAlterarCliente() {
+
+        val db = getWritableDatabase()
+
+        val cliente = Cliente("Afonso","966666666","Guarda")
+        insereCliente(db, cliente)
+
+        cliente.nome = "Manel"
+        cliente.contacto = "988888888"
+        cliente.localidade = "Covilha"
+
+
+        val registosAlterados = TabelaBDCliente(db).update(
+            cliente.toContentValues(),
+            "${BaseColumns._ID}= ?",
+            arrayOf("${cliente.id}"))
+
+        assertEquals(1, registosAlterados)
+
+        db.close()
     }
 
 }
