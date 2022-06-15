@@ -131,4 +131,49 @@ class BaseDadosTest {
         db.close()
     }
 
+    @Test
+    fun consegueAlterarLocalidade() {
+
+        val db = getWritableDatabase()
+
+        val localidade = Localidade("Guarda")
+        insereLocalidade(db, localidade)
+
+        localidade.nome = "Covilhã"
+
+        val registosAlterados = TabelaBDLocalidade(db).update(
+            localidade.toContentValues(),
+            "${BaseColumns._ID}= ?",
+            arrayOf("${localidade.id}"))
+
+        assertEquals(1, registosAlterados)
+
+        db.close()
+    }
+
+    @Test
+    fun consegueAlterarEntrega() {
+        val db = getWritableDatabase()
+
+        val entrega = Entrega("Ze","Paletes",5,"15/06/2022","Guarda",3 )
+        insereEntrega(db, entrega)
+
+
+        entrega.nome_cliente = "Maria"
+        entrega.nome_produto = "Armarios"
+        entrega.quantidade = 10
+        entrega.data = "14/06/2022"
+        entrega.localidade = "Covilhã"
+
+        val registosAlterados = TabelaBDEntrega(db).update(
+            entrega.toContentValues(),
+            "${BaseColumns._ID}= ?",
+            arrayOf("${entrega.id}"))
+
+        assertEquals(1, registosAlterados)
+
+        db.close()
+    }
+
+
 }
