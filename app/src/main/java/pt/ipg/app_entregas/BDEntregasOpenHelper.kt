@@ -18,6 +18,7 @@ class BDEntregasOpenHelper (context: Context?) : SQLiteOpenHelper(context, BDEnt
             TabelaBDCliente(db).cria()
             TabelaBDEntrega(db).cria()
             TabelaBDProduto(db).cria()
+            TabelaBDLocalidade(db).cria()
         }
 
         /**

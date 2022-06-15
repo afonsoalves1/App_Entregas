@@ -24,9 +24,9 @@ class BaseDadosTest {
         return openHelper.writableDatabase
     }
 
-    private fun insereProduto(db: SQLiteDatabase, Produto: Produto) {
-        Produto.id = TabelaBDProduto(db).insert(Produto.toContentValues())
-        assertNotEquals(-1, Produto.id)
+    private fun insereProduto(db: SQLiteDatabase, produto: Produto) {
+        produto.id = TabelaBDProduto(db).insert(produto.toContentValues())
+        assertNotEquals(-1, produto.id)
     }
 
     private fun insereEntrega(db: SQLiteDatabase, Entrega: Entrega) {
@@ -34,9 +34,14 @@ class BaseDadosTest {
         assertNotEquals(-1, Entrega.id)
     }
 
-    private fun insereCliente(db: SQLiteDatabase, Cliente: Cliente) {
-        Cliente.id = TabelaBDEntrega(db).insert(Cliente.toContentValues())
-        assertNotEquals(-1, Cliente.id)
+    private fun insereLocalidade(db: SQLiteDatabase, localidade: Localidade) {
+        localidade.id = TabelaBDLocalidade(db).insert(localidade.toContentValues())
+        assertNotEquals(-1, localidade.id)
+    }
+
+    private fun insereCliente(db: SQLiteDatabase, cliente: Cliente) {
+        cliente.id = TabelaBDEntrega(db).insert(cliente.toContentValues())
+        assertNotEquals(-1, cliente.id)
     }
 
     @Before
@@ -53,4 +58,40 @@ class BaseDadosTest {
 
         db.close()
     }
+
+    @Test
+    fun consegueInserirProduto() {
+        val db = getWritableDatabase()
+
+        insereProduto(db, Produto("Caixas", "Fragil"))
+
+        db.close()
+
+    }
+
+    @Test
+    fun consegueInserirCliente() {
+        val db = getWritableDatabase()
+
+        insereCliente(db, Cliente("Afonso", "966666666", "Guarda"))
+
+        db.close()
+    }
+
+    @Test
+    fun consegueInserirLocalidade() {
+        val db = getWritableDatabase()
+
+        insereLocalidade(db, Localidade("Guarda"))
+
+        db.close()
+    }
+
+    @Test
+    fun consegueInserirEntrega(){
+        val db = getWritableDatabase()
+
+        insereEntrega(db, Entrega("Ze","Paletes",5,"15/06/2022",3 ))
+    }
+
 }

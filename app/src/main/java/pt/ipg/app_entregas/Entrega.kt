@@ -1,20 +1,24 @@
 package pt.ipg.app_entregas
 
 import android.content.ContentValues
+import android.database.sqlite.SQLiteDatabase
 import java.text.DateFormat
 import java.util.*
 
-data class Entrega (
-               var Data: String,
-               var produto_ID: Int,
-               var cliente_ID: Int,
-               var entrega_ID: Int,
-               var id: Long = -1) {
+data class Entrega ( var nome_cliente: String,
+                     var nome_produto: String,
+                     var quantidade: Int,
+                     var data: String,
+                     var id: Long = -1,
+) {
     fun toContentValues() : ContentValues {
         val valores = ContentValues()
-        valores.put(TabelaBDEntrega.Data, Data)
-        valores.put(TabelaBDEntrega.Produto_ID, produto_ID)
-        valores.put(TabelaBDEntrega.Cliente_ID, cliente_ID)
+
+        valores.put(TabelaBDEntrega.CAMPO_NOME_CLIENTE, nome_cliente)
+        valores.put(TabelaBDEntrega.CAMPO_NOME_PRODUTO, nome_produto )
+        valores.put(TabelaBDEntrega.CAMPO_QUANTIDADE, quantidade)
+        valores.put(TabelaBDEntrega.CAMPO_DATA, data)
+
 
         return valores
     }

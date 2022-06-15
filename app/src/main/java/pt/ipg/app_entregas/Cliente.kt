@@ -4,20 +4,18 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
 
-data class Cliente (var nome_Cliente: String,
-                    var Mail_Cliente: String,
-                    var Telefone_Cliente: Int,
-                    var Morada_Cliente: String,
-                    var Localidade_Cliente: String,
-                    var Client_ID: Int,
-                    var id: Long = -1,) {
-    fun toContentValues() : ContentValues {
+data class Cliente (var nome: String,
+                    var contacto: String,
+                    var localidade: String,
+                    var id: Long =-1,
+) {
+    fun toContentValues() : ContentValues{
         val valores = ContentValues()
-        valores.put(TabelaBDCliente.Nome, nome_Cliente)
-        valores.put(TabelaBDCliente.Mail, Mail_Cliente)
-        valores.put(TabelaBDCliente.Telefone, Telefone_Cliente)
-        valores.put(TabelaBDCliente.Morada, Morada_Cliente)
-        valores.put(TabelaBDCliente.Localidade, Localidade_Cliente)
+
+        valores.put(TabelaBDCliente.CAMPO_NOME, nome)
+        valores.put(TabelaBDCliente.CAMPO_CONTACTO, contacto )
+        valores.put(TabelaBDCliente.CAMPO_LOCALIDADE, localidade)
+
 
         return valores
     }
