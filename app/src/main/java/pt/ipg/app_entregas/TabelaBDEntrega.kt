@@ -5,17 +5,18 @@ import android.provider.BaseColumns
 
 class TabelaBDEntrega (db: SQLiteDatabase) : TabelaBD(db, NOME) {
     override fun cria() {
-        db.execSQL("CREATE TABLE $nome (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT, $Cliente_ID TEXT NOT NULL, $Entrega_ID TEXT NOT NULL, " +
-                "$Data TEXT NOT NULL, $Produto_ID INTEGER NOT NULL,  FOREIGN KEY($Produto_ID) REFERENCES ${TabelaBDProduto.Produto_ID}(${BaseColumns._ID}) ON DELETE RESTRICT)")
-
+        db.execSQL("CREATE TABLE $nome (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "$CAMPO_NOME_CLIENTE REFERENCES ${TabelaBDProduto.CAMPO_NOME} ON DELETE RESTRICT," +
+                "$CAMPO_NOME_PRODUTO REFERENCES ${TabelaBDProduto.CAMPO_NOME} ON DELETE RESTRICT," +
+                "$CAMPO_QUANTIDADE INTEGER NOT NULL, $CAMPO_DATA TEXT NOT NULL)")
     }
 
     companion object {
         const val NOME = "Entrega"
-        const val Data = "Data"
-        const val Produto_ID = "Produto_ID"
-        const val Cliente_ID = "Cliente_ID"
-        const val Entrega_ID = "Entrega_ID"
+        const val CAMPO_NOME_CLIENTE = "Nome_Cliente"
+        const val CAMPO_NOME_PRODUTO = "Nome_Produto"
+        const val CAMPO_QUANTIDADE = "Quantidade"
+        const val CAMPO_DATA = "Data"
 
     }
 
