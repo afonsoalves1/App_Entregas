@@ -4,9 +4,7 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
 
-data class Cliente (var nome: String,
-                    var contacto: String,
-                    var localidade: String,
+data class Cliente (var nome: String, var contacto: String,
                     var id: Long =-1,
 ) {
     fun toContentValues() : ContentValues{
@@ -14,7 +12,7 @@ data class Cliente (var nome: String,
 
         valores.put(TabelaBDCliente.CAMPO_NOME, nome)
         valores.put(TabelaBDCliente.CAMPO_CONTACTO, contacto )
-        valores.put(TabelaBDCliente.CAMPO_LOCALIDADE, localidade)
+
 
 
         return valores

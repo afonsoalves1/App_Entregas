@@ -70,7 +70,7 @@ class BaseDadosTest {
     @Test
     fun consegueInserirCliente() {
         val db = getWritableDatabase()
-        insereCliente(db, Cliente("Afonso", "966666666", "Guarda"))
+        insereCliente(db, Cliente("Afonso", "966666666"))
         db.close()
     }
 
@@ -84,7 +84,8 @@ class BaseDadosTest {
     @Test
     fun consegueInserirEntrega(){
         val db = getWritableDatabase()
-        insereEntrega(db, Entrega("Ze","Paletes",5,"15/06/2022","Guarda",3 ))
+
+        insereEntrega(db, Entrega(5,"Paletes",5 ))
         db.close()
     }
 
@@ -113,12 +114,12 @@ class BaseDadosTest {
 
         val db = getWritableDatabase()
 
-        val cliente = Cliente("Afonso","966666666","Guarda")
+        val cliente = Cliente("Afonso","966666666")
         insereCliente(db, cliente)
 
         cliente.nome = "Manel"
         cliente.contacto = "988888888"
-        cliente.localidade = "Covilha"
+
 
 
         val registosAlterados = TabelaBDCliente(db).update(
@@ -155,15 +156,11 @@ class BaseDadosTest {
     fun consegueAlterarEntrega() {
         val db = getWritableDatabase()
 
-        val entrega = Entrega("Ze","Paletes",5,"15/06/2022","Guarda",3 )
+        val entrega = Entrega(6,"Paletes",3 )
         insereEntrega(db, entrega)
 
-
-        entrega.nome_cliente = "Maria"
-        entrega.nome_produto = "Armarios"
         entrega.quantidade = 10
         entrega.data = "14/06/2022"
-        entrega.localidade = "Covilhã"
 
         val registosAlterados = TabelaBDEntrega(db).update(
             entrega.toContentValues(),
