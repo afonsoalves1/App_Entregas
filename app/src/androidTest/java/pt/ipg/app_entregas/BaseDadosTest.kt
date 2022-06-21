@@ -217,5 +217,29 @@ class BaseDadosTest {
 
         db.close()
     }
+    @Test
+    fun consegueEliminarEntrega() {
+        val db = getWritableDatabase()
+
+        val cliente = Cliente ("Afonso",923234234,30,"Porto")
+        insereCliente(db, cliente)
+
+        val localidade = Localidade("Guarda" )
+        insereLocalidade(db, localidade)
+
+        val produto = Produto("Caixas", "Fragil" )
+        insereProduto(db, produto)
+
+        val entrega = Entrega (2,"23-06-22", cliente.id, localidade.id, produto.id)
+        insereEntrega(db, entrega)
+
+        val registosEliminados = TabelaBDEntrega(db).delete(
+            "${BaseColumns._ID}=?",
+            arrayOf("${entrega.id}"))
+
+        assertEquals(1, registosEliminados)
+
+        db.close()
+    }
 }
 
