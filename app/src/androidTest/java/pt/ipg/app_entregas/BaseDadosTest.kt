@@ -241,5 +241,21 @@ class BaseDadosTest {
 
         db.close()
     }
+
+    @Test
+    fun consegueEliminarLocalidade() {
+        val db = getWritableDatabase()
+
+        val localidade = Localidade("Guarda")
+        insereLocalidade(db, localidade)
+
+        val registosEliminados = TabelaBDLocalidade(db).delete(
+            "${BaseColumns._ID}=?",
+            arrayOf("${localidade.id}"))
+
+        assertEquals(1, registosEliminados)
+
+        db.close()
+    }
 }
 
