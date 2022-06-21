@@ -257,5 +257,21 @@ class BaseDadosTest {
 
         db.close()
     }
+
+    @Test
+    fun consegueEliminarProduto() {
+        val db = getWritableDatabase()
+
+        val produto = Produto("Caixas","Fragil")
+        insereProduto(db, produto)
+
+        val registosEliminados = TabelaBDProduto(db).delete(
+            "${BaseColumns._ID}=?",
+            arrayOf("${produto.id}"))
+
+        assertEquals(1, registosEliminados)
+
+        db.close()
+    }
 }
 
