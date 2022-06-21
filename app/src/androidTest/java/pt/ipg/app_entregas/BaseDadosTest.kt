@@ -192,13 +192,28 @@ class BaseDadosTest {
         entrega.idProduto = produtoArmarios.id
         entrega.idLocalidade = localidadeCovilha.id
 
-
         val registosAlterados = TabelaBDEntrega(db).update(
             entrega.toContentValues(),
             "${BaseColumns._ID}= ?",
             arrayOf("${entrega.id}"))
 
         assertEquals(1, registosAlterados)
+
+        db.close()
+    }
+
+    @Test
+    fun consegueEliminarCliente() {
+        val db = getWritableDatabase()
+
+        val cliente = Cliente ("Afonso",923234234,30,"Porto")
+        insereCliente(db, cliente)
+
+        val registosEliminados = TabelaBDCliente(db).delete(
+            "${BaseColumns._ID}=?",
+            arrayOf("${cliente.id}"))
+
+        assertEquals(1, registosEliminados)
 
         db.close()
     }
