@@ -4,9 +4,10 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
 
-data class Cliente (var nome: String, var contacto: String,
-                    var id: Long =-1,
-) {
+data class Cliente (var nome: String,
+                    var contacto: Int,
+                    var id: Long = -1 )
+{
     fun toContentValues() : ContentValues{
         val valores = ContentValues()
 
@@ -17,6 +18,4 @@ data class Cliente (var nome: String, var contacto: String,
 
         return valores
     }
-
-
 }

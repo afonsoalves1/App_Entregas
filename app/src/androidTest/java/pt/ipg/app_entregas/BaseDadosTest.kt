@@ -41,7 +41,7 @@ class BaseDadosTest {
     }
 
     private fun insereCliente(db: SQLiteDatabase, cliente: Cliente) {
-        cliente.id = TabelaBDEntrega(db).insert(cliente.toContentValues())
+        cliente.id = TabelaBDCliente(db).insert(cliente.toContentValues())
         assertNotEquals(-1, cliente.id)
     }
 
@@ -70,7 +70,7 @@ class BaseDadosTest {
     @Test
     fun consegueInserirCliente() {
         val db = getWritableDatabase()
-        insereCliente(db, Cliente("Afonso", "966666666"))
+        insereCliente(db, Cliente("Afonso", 966666666))
         db.close()
     }
 
@@ -82,10 +82,10 @@ class BaseDadosTest {
     }
 
     @Test
-    fun consegueInserirEntrega(){
+    fun consegueInserirEntrega() {
         val db = getWritableDatabase()
 
-        insereEntrega(db, Entrega(5,"Paletes",5 ))
+        insereEntrega(db, Entrega(5, "13-02-22", 1,1,1))
         db.close()
     }
 
@@ -114,11 +114,11 @@ class BaseDadosTest {
 
         val db = getWritableDatabase()
 
-        val cliente = Cliente("Afonso","966666666")
+        val cliente = Cliente("Afonso",966666666)
         insereCliente(db, cliente)
 
         cliente.nome = "Manel"
-        cliente.contacto = "988888888"
+        cliente.contacto = 988888888
 
 
 
@@ -156,11 +156,14 @@ class BaseDadosTest {
     fun consegueAlterarEntrega() {
         val db = getWritableDatabase()
 
-        val entrega = Entrega(6,"Paletes",3 )
+        val entrega = Entrega(6,"13-02-22",1,1,1 )
         insereEntrega(db, entrega)
 
         entrega.quantidade = 10
         entrega.data = "14/06/2022"
+        entrega.idCliente = 2
+        entrega.idProduto = 2
+        entrega.idLocalidade = 2
 
         val registosAlterados = TabelaBDEntrega(db).update(
             entrega.toContentValues(),
@@ -171,6 +174,5 @@ class BaseDadosTest {
 
         db.close()
     }
-
-
 }
+
