@@ -165,14 +165,33 @@ class BaseDadosTest {
     fun consegueAlterarEntrega() {
         val db = getWritableDatabase()
 
-        val entrega = Entrega(6,"13-02-22",1,1,1 )
+        val clienteVasco = Cliente("Vasco", 988888888 ,30,"Lisboa")
+        insereCliente(db, clienteVasco)
+
+        val clienteAfonso = Cliente("Afonso", 988888888 ,30,"Lisboa")
+        insereCliente(db, clienteAfonso)
+
+        val produtoCaixas = Produto("Caixas", "Fragil" )
+        insereProduto(db, produtoCaixas)
+
+        val produtoArmarios = Produto("Armarios", "Não_Fragil" )
+        insereProduto(db, produtoArmarios)
+
+        val localidadeGuarda = Localidade("Guarda" )
+        insereLocalidade(db, localidadeGuarda)
+
+        val localidadeCovilha = Localidade("Covilha" )
+        insereLocalidade(db, localidadeCovilha)
+
+        val entrega = Entrega(6,"13-02-22",clienteVasco.id , produtoCaixas.id, localidadeGuarda.id  )
         insereEntrega(db, entrega)
 
         entrega.quantidade = 10
         entrega.data = "14/06/2022"
-        entrega.idCliente = 2
-        entrega.idProduto = 2
-        entrega.idLocalidade = 2
+        entrega.idCliente = clienteAfonso.id
+        entrega.idProduto = produtoArmarios.id
+        entrega.idLocalidade = localidadeCovilha.id
+
 
         val registosAlterados = TabelaBDEntrega(db).update(
             entrega.toContentValues(),
