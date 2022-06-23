@@ -14,4 +14,17 @@ class Localidade (var nome: String,
             return valores
         }
 
+    companion object {
+        fun fromCursor(cursor: Cursor): Localidade {
+            val posId = cursor.getColumnIndex(BaseColumns._ID)
+            val posLocalidade = cursor.getColumnIndex(TabelaBDLocalidade.CAMPO_LOCALIDADE)
+
+            val id = cursor.getLong(posId)
+            val localidade = cursor.getString(posLocalidade)
+
+            return Localidade(localidade, id)
+        }
     }
+
+
+}
