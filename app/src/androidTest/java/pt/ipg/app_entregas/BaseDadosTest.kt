@@ -273,5 +273,29 @@ class BaseDadosTest {
 
         db.close()
     }
+
+    @Test
+    fun consegueLerClientes() {
+        val db = getWritableDatabase()
+
+        val cliente = Cliente("Afonso",966666666,25,"Guarda")
+        insereCliente(db, cliente)
+
+        val cursor = TabelaBDCliente(db).query(
+            TabelaBDCliente.TODAS_COLUNAS,
+            "${BaseColumns._ID}=?",
+            arrayOf("${cliente.id}"),
+            null,
+            null,
+            null
+        )
+
+        assertEquals(1, cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        val clientBD = Cliente.fromCursor(cursor)
+
+        assertEquals(cliente, clientBD)
+    }
 }
 
