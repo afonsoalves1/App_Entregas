@@ -1,6 +1,8 @@
 package pt.ipg.app_entregas
 
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteQueryBuilder
 import android.provider.BaseColumns
 
 class TabelaBDEntrega (db: SQLiteDatabase) : TabelaBD(db, NOME) {
@@ -15,6 +17,7 @@ class TabelaBDEntrega (db: SQLiteDatabase) : TabelaBD(db, NOME) {
                 "FOREIGN KEY ($CAMPO_LOCALIDADE_ID) REFERENCES ${TabelaBDLocalidade.NOME}(${BaseColumns._ID}) ON DELETE RESTRICT)")
     }
 
+
     companion object {
         const val NOME = "Entrega"
         const val CAMPO_QUANTIDADE = "Quantidade"
@@ -23,6 +26,6 @@ class TabelaBDEntrega (db: SQLiteDatabase) : TabelaBD(db, NOME) {
         const val CAMPO_PRODUTO_ID = "idProduto"
         const val CAMPO_LOCALIDADE_ID = "idLocalidade"
 
-    }
 
+    }
 }

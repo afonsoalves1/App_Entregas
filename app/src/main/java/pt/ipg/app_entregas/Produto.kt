@@ -1,6 +1,8 @@
 package pt.ipg.app_entregas
 
 import android.content.ContentValues
+import android.database.Cursor
+import android.provider.BaseColumns
 
 data class Produto ( var nome: String,
                 var Descricao: String,
@@ -12,4 +14,5 @@ data class Produto ( var nome: String,
 
         return valores
     }
+
 }

@@ -1,7 +1,9 @@
 package pt.ipg.app_entregas
 
 import android.content.ContentValues
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.provider.BaseColumns
 import java.text.DateFormat
 import java.util.*
 
@@ -23,4 +25,8 @@ data class Entrega ( var quantidade: Int,
 
         return valores
     }
+
+
+
+
 }

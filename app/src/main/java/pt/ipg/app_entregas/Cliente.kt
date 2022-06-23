@@ -20,4 +20,24 @@ data class Cliente (var nome: String,
 
         return valores
     }
+
+    companion object {
+        fun fromCursor(cursor: Cursor): Cliente {
+            val posId = cursor.getColumnIndex(BaseColumns._ID)
+            val posNome = cursor.getColumnIndex(TabelaBDCliente.CAMPO_NOME)
+            val posContacto = cursor.getColumnIndex(TabelaBDCliente.CAMPO_CONTACTO)
+            val posIdade = cursor.getColumnIndex(TabelaBDCliente.CAMPO_IDADE)
+            val posMorada = cursor.getColumnIndex(TabelaBDCliente.CAMPO_MORADA)
+
+            val id = cursor.getLong(posId)
+            val nome = cursor.getString(posNome)
+            val contacto = cursor.getInt(posContacto)
+            val idade = cursor.getInt(posIdade)
+            val morada = cursor.getString(posMorada)
+
+            return Cliente(nome, contacto,idade, morada,id)
+        }
+    }
+
+
 }

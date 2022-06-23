@@ -1,6 +1,8 @@
 package pt.ipg.app_entregas
 
 import android.content.ContentValues
+import android.database.Cursor
+import android.provider.BaseColumns
 
 class Localidade (var nome: String,
                   var id: Long = -1){
@@ -11,4 +13,5 @@ class Localidade (var nome: String,
             valores.put(TabelaBDLocalidade.CAMPO_LOCALIDADE, nome)
             return valores
         }
+
     }

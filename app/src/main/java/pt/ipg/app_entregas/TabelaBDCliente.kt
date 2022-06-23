@@ -15,5 +15,7 @@ class TabelaBDCliente (db: SQLiteDatabase) : TabelaBD(db, NOME) {
         const val CAMPO_CONTACTO = "Telefone"
         const val CAMPO_IDADE = "Idade"
         const val CAMPO_MORADA = "Morada"
+
+
     }
     }
