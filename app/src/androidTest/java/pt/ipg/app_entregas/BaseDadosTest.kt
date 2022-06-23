@@ -297,5 +297,29 @@ class BaseDadosTest {
 
         assertEquals(cliente, clientBD)
     }
+
+    @Test
+    fun consegueLerLocalidade() {
+        val db = getWritableDatabase()
+
+        val localidade = Localidade("Guarda")
+        insereLocalidade(db, localidade)
+
+        val cursor = TabelaBDLocalidade(db).query(
+            TabelaBDLocalidade.TODAS_COLUNAS,
+            "${TabelaBDLocalidade.CAMPO_LOCALIDADE_ID}=?",
+            arrayOf("${localidade.id}"),
+            null,
+            null,
+            null
+        )
+
+        assertEquals(1, cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        val localidadeBD = Localidade.fromCursor(cursor)
+
+        assertEquals(localidade, localidadeBD)
+    }
 }
 
