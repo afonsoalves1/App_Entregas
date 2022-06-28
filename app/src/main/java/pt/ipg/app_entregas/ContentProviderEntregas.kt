@@ -2,6 +2,7 @@ package pt.ipg.app_entregas
 
 import android.content.ContentProvider
 import android.content.ContentValues
+import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
 
@@ -206,5 +207,33 @@ class ContentProviderEntregas: ContentProvider (){
         selectionArgs: Array<out String>?
     ): Int {
         TODO("Not yet implemented")
+    }
+
+    companion object {
+        const val AUTHORITY = "pt.ipg.app_entregas"
+
+        const val URI_CLIENTE = 100
+        const val URI_CLIENTE_ESPECIFICO = 101
+        const val URI_LOCALIDADE = 200
+        const val URI_LOCALIDADE_ESPECIFICA= 201
+        const val URI_PRODUTO = 300
+        const val URI_PRODUTO_ESPECIFICO= 301
+        const val URI_ENTREGA = 400
+        const val URI_ENTREGA_ESPECIFICA = 401
+
+        fun getUriMatcher() : UriMatcher {
+            var uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
+
+            uriMatcher.addURI(AUTHORITY, TabelaBDCliente.NOME, URI_CLIENTE)
+            uriMatcher.addURI(AUTHORITY, "${TabelaBDCliente.NOME}/#", URI_CLIENTE_ESPECIFICO)
+            uriMatcher.addURI(AUTHORITY, TabelaBDLocalidade.NOME, URI_LOCALIDADE)
+            uriMatcher.addURI(AUTHORITY, "${TabelaBDLocalidade.NOME}/#", URI_LOCALIDADE_ESPECIFICA)
+            uriMatcher.addURI(AUTHORITY, TabelaBDProduto.NOME, URI_PRODUTO)
+            uriMatcher.addURI(AUTHORITY, "${TabelaBDProduto.NOME}/#", URI_PRODUTO_ESPECIFICO)
+            uriMatcher.addURI(AUTHORITY, TabelaBDEntrega.NOME, URI_ENTREGA)
+            uriMatcher.addURI(AUTHORITY, "${TabelaBDEntrega.NOME}/#", URI_ENTREGA_ESPECIFICA)
+
+            return uriMatcher
+        }
     }
 }
