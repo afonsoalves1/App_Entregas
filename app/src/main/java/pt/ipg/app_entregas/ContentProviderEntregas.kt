@@ -4,12 +4,12 @@ import android.content.ContentProvider
 import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
-import android.database.sqlite.SQLiteOpenHelper
 import android.net.Uri
+import android.provider.BaseColumns
 
 class ContentProviderEntregas: ContentProvider () {
 
-    var db: BDEntregasOpenHelper? = null
+    var dbOpenHelper: BDEntregasOpenHelper? = null
 
     /**
      * Implement this to initialize your content provider on startup.
@@ -39,7 +39,7 @@ class ContentProviderEntregas: ContentProvider () {
      * @return true if the provider was successfully loaded, false otherwise
      */
     override fun onCreate(): Boolean {
-        db = BDEntregasOpenHelper(context)
+        dbOpenHelper = BDEntregasOpenHelper(context)
 
         return true
     }
@@ -118,7 +118,26 @@ class ContentProviderEntregas: ContentProvider () {
         selectionArgs: Array<out String>?,
         sortOrder: String?
     ): Cursor? {
-        TODO("Not yet implemented")
+        val db = dbOpenHelper!!.readableDatabase
+
+        requireNotNull(projection)
+        val colunas = projection as Array<String>
+
+        val argsSeleccao = selectionArgs as Array<String>?
+
+        val id = uri.lastPathSegment
+
+        val cursor = when (getUriMatcher().match(uri)) {
+            URI_ENTREGA -> TabelaBDEntrega(db).query(colunas, selection, argsSeleccao, null, null, sortOrder)
+            URI_CLIENTE -> TabelaBDCliente(db).query(colunas, selection, argsSeleccao, null, null, sortOrder)
+            URI_ENTREGA_ESPECIFICA -> TabelaBDEntrega(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+            URI_CLIENTE_ESPECIFICO -> TabelaBDCliente(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+            else -> null
+        }
+
+        db.close()
+
+        return cursor
     }
 
     /**
@@ -148,7 +167,7 @@ class ContentProviderEntregas: ContentProvider () {
             URI_CLIENTE_ESPECIFICO -> "$UNICO_REGISTO/${TabelaBDCliente.NOME}"
             else -> null
         }
-    
+
 
 
 
