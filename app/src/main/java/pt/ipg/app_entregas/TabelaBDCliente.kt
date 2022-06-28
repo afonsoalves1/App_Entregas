@@ -19,4 +19,4 @@ class TabelaBDCliente (db: SQLiteDatabase) : TabelaBD(db, NOME) {
         val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_CONTACTO, CAMPO_IDADE, CAMPO_MORADA)
 
     }
-    }
+}

@@ -14,5 +14,18 @@ data class Produto ( var nome: String,
 
         return valores
     }
+    companion object {
+        fun fromCursor(cursor: Cursor): Produto {
+            val posId = cursor.getColumnIndex(BaseColumns._ID)
+            val posNomeProduto = cursor.getColumnIndex(TabelaBDProduto.CAMPO_NOME_PRODUTO)
+            val posDescricao = cursor.getColumnIndex(TabelaBDProduto.CAMPO_DESCRICAO_PRODUTO)
+
+            val id = cursor.getLong(posId)
+            val nome = cursor.getString(posNomeProduto)
+            val descricao = cursor.getString(posDescricao)
+
+            return Produto(nome, descricao,id)
+        }
+    }
 
 }

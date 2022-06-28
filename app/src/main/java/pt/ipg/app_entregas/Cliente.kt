@@ -38,6 +38,4 @@ data class Cliente (var nome: String,
             return Cliente(nome, contacto,idade, morada,id)
         }
     }
-
-
 }

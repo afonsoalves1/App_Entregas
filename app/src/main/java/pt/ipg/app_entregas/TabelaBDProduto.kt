@@ -15,6 +15,7 @@ open class TabelaBDProduto (db: SQLiteDatabase) : TabelaBD(db, NOME) {
 
         const val CAMPO_NOME_PRODUTO = "Nome_Produto"
         const val CAMPO_DESCRICAO_PRODUTO = "Descricao_Produto"
+        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_NOME_PRODUTO, CAMPO_DESCRICAO_PRODUTO)
 
     }
 }

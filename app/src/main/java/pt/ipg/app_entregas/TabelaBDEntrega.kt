@@ -26,6 +26,7 @@ class TabelaBDEntrega (db: SQLiteDatabase) : TabelaBD(db, NOME) {
         const val CAMPO_PRODUTO_ID = "idProduto"
         const val CAMPO_LOCALIDADE_ID = "idLocalidade"
 
-
+        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_QUANTIDADE, CAMPO_DATA, CAMPO_CLIENTE_ID,
+            CAMPO_PRODUTO_ID, CAMPO_LOCALIDADE_ID)
     }
 }

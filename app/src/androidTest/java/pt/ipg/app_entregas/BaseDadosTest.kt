@@ -296,6 +296,7 @@ class BaseDadosTest {
         val clientBD = Cliente.fromCursor(cursor)
 
         assertEquals(cliente, clientBD)
+        db.close()
     }
 
     @Test
@@ -307,8 +308,32 @@ class BaseDadosTest {
 
         val cursor = TabelaBDLocalidade(db).query(
             TabelaBDLocalidade.TODAS_COLUNAS,
-            "${TabelaBDLocalidade.CAMPO_LOCALIDADE_ID}=?",
+            "${BaseColumns._ID}=?",
             arrayOf("${localidade.id}"),
+            null,
+            null,
+            null
+        )
+        assertEquals(1, cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        val localBD = Localidade.fromCursor(cursor)
+
+        assertEquals(localidade,localBD)
+        db.close()
+    }
+
+    @Test
+    fun consegueLerProduto() {
+        val db = getWritableDatabase()
+
+        val produto = Produto("Caixas","Fragil")
+        insereProduto(db, produto)
+
+        val cursor = TabelaBDProduto(db).query(
+            TabelaBDProduto.TODAS_COLUNAS,
+            "${BaseColumns._ID}=?",
+            arrayOf("${produto.id}"),
             null,
             null,
             null
@@ -317,9 +342,46 @@ class BaseDadosTest {
         assertEquals(1, cursor.count)
         assertTrue(cursor.moveToNext())
 
-        val localidadeBD = Localidade.fromCursor(cursor)
+        val produtoBD = Produto.fromCursor(cursor)
 
-        assertEquals(localidade, localidadeBD)
+        assertEquals(produto, produtoBD)
+        db.close()
+    }
+
+
+    @Test
+    fun consegueLerEntregas() {
+        val db = getWritableDatabase()
+
+        val cliente = Cliente("Afonso",966666666,25,"Guarda")
+        insereCliente(db, cliente)
+
+        val localidade = Localidade("Lisboa")
+        insereLocalidade(db, localidade)
+
+        val produto = Produto("Caixas","Fragil")
+        insereProduto(db, produto)
+
+        val entrega = Entrega(2,"24/06/2022", cliente.id ,produto.id, localidade.id )
+        insereEntrega(db, entrega)
+
+        val cursor = TabelaBDEntrega(db).query(
+            TabelaBDEntrega.TODAS_COLUNAS,
+            "${BaseColumns._ID}=?",
+            arrayOf("${entrega.id}"),
+            null,
+            null,
+            null
+        )
+
+        assertEquals(1, cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        val entregaBD = Entrega.fromCursor(cursor)
+
+        assertEquals(entrega, entregaBD)
+
+        db.close()
     }
 }
 
