@@ -4,11 +4,13 @@ import android.content.ContentProvider
 import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
+import android.database.sqlite.SQLiteOpenHelper
 import android.net.Uri
 
-class ContentProviderEntregas: ContentProvider (){
+class ContentProviderEntregas: ContentProvider () {
 
-    var db : BDEntregasOpenHelper? = null
+    var db: BDEntregasOpenHelper? = null
+
     /**
      * Implement this to initialize your content provider on startup.
      * This method is called for all registered content providers on the
@@ -138,9 +140,17 @@ class ContentProviderEntregas: ContentProvider (){
      * @param uri the URI to query.
      * @return a MIME type string, or `null` if there is no type.
      */
-    override fun getType(uri: Uri): String? {
-        TODO("Not yet implemented")
-    }
+    override fun getType(uri: Uri): String? =
+        when (getUriMatcher().match(uri)) {
+            URI_ENTREGA -> "$MULTIPLOS_REGISTOS/${TabelaBDEntrega.NOME}"
+            URI_CLIENTE -> "$MULTIPLOS_REGISTOS/${TabelaBDCliente.NOME}"
+            URI_ENTREGA_ESPECIFICA -> "$UNICO_REGISTO/${TabelaBDEntrega.NOME}"
+            URI_CLIENTE_ESPECIFICO -> "$UNICO_REGISTO/${TabelaBDCliente.NOME}"
+            else -> null
+        }
+    
+
+
 
     /**
      * Implement this to handle requests to insert a new row. As a courtesy,
@@ -214,22 +224,19 @@ class ContentProviderEntregas: ContentProvider (){
 
         const val URI_CLIENTE = 100
         const val URI_CLIENTE_ESPECIFICO = 101
-        const val URI_LOCALIDADE = 200
-        const val URI_LOCALIDADE_ESPECIFICA= 201
-        const val URI_PRODUTO = 300
-        const val URI_PRODUTO_ESPECIFICO= 301
-        const val URI_ENTREGA = 400
-        const val URI_ENTREGA_ESPECIFICA = 401
+
+        const val URI_ENTREGA = 200
+        const val URI_ENTREGA_ESPECIFICA = 201
+
+        const val UNICO_REGISTO = "vnd.android.cursor.item"
+        const val MULTIPLOS_REGISTOS = "vnd.android.cursor.dir"
 
         fun getUriMatcher() : UriMatcher {
             var uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
 
             uriMatcher.addURI(AUTHORITY, TabelaBDCliente.NOME, URI_CLIENTE)
             uriMatcher.addURI(AUTHORITY, "${TabelaBDCliente.NOME}/#", URI_CLIENTE_ESPECIFICO)
-            uriMatcher.addURI(AUTHORITY, TabelaBDLocalidade.NOME, URI_LOCALIDADE)
-            uriMatcher.addURI(AUTHORITY, "${TabelaBDLocalidade.NOME}/#", URI_LOCALIDADE_ESPECIFICA)
-            uriMatcher.addURI(AUTHORITY, TabelaBDProduto.NOME, URI_PRODUTO)
-            uriMatcher.addURI(AUTHORITY, "${TabelaBDProduto.NOME}/#", URI_PRODUTO_ESPECIFICO)
+
             uriMatcher.addURI(AUTHORITY, TabelaBDEntrega.NOME, URI_ENTREGA)
             uriMatcher.addURI(AUTHORITY, "${TabelaBDEntrega.NOME}/#", URI_ENTREGA_ESPECIFICA)
 
