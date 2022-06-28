@@ -7,6 +7,7 @@ import android.net.Uri
 
 class ContentProviderEntregas: ContentProvider (){
 
+    var db : BDEntregasOpenHelper? = null
     /**
      * Implement this to initialize your content provider on startup.
      * This method is called for all registered content providers on the
@@ -35,7 +36,9 @@ class ContentProviderEntregas: ContentProvider (){
      * @return true if the provider was successfully loaded, false otherwise
      */
     override fun onCreate(): Boolean {
-        TODO("Not yet implemented")
+        db = BDEntregasOpenHelper(context)
+
+        return true
     }
 
     /**
