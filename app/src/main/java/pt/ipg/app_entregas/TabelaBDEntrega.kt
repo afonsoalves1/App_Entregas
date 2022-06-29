@@ -20,13 +20,16 @@ class TabelaBDEntrega (db: SQLiteDatabase) : TabelaBD(db, NOME) {
 
     companion object {
         const val NOME = "Entrega"
+        const val CAMPO_ID = "$NOME.${BaseColumns._ID}"
+
         const val CAMPO_QUANTIDADE = "Quantidade"
         const val CAMPO_DATA = "Data"
         const val CAMPO_CLIENTE_ID = "idCliente"
         const val CAMPO_PRODUTO_ID = "idProduto"
         const val CAMPO_LOCALIDADE_ID = "idLocalidade"
 
-        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_QUANTIDADE, CAMPO_DATA, CAMPO_CLIENTE_ID,
+        val TODAS_COLUNAS = arrayOf(
+            CAMPO_ID, CAMPO_QUANTIDADE, CAMPO_DATA, CAMPO_CLIENTE_ID,
             CAMPO_PRODUTO_ID, CAMPO_LOCALIDADE_ID)
     }
 }

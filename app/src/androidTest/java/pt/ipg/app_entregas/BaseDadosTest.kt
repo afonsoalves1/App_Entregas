@@ -111,7 +111,7 @@ class BaseDadosTest {
 
         val registosAlterados = TabelaBDProduto(db).update(
             produto.toContentValues(),
-            "${BaseColumns._ID}= ?",
+            "${TabelaBDProduto.CAMPO_ID}= ?",
             arrayOf("${produto.id}"))
 
         assertEquals(1, registosAlterados)
@@ -133,7 +133,7 @@ class BaseDadosTest {
 
         val registosAlterados = TabelaBDCliente(db).update(
             cliente.toContentValues(),
-            "${BaseColumns._ID}= ?",
+            "${TabelaBDCliente.CAMPO_ID}= ?",
             arrayOf("${cliente.id}"))
 
         assertEquals(1, registosAlterados)
@@ -153,7 +153,7 @@ class BaseDadosTest {
 
         val registosAlterados = TabelaBDLocalidade(db).update(
             localidade.toContentValues(),
-            "${BaseColumns._ID}= ?",
+            "${TabelaBDLocalidade.CAMPO_ID}= ?",
             arrayOf("${localidade.id}"))
 
         assertEquals(1, registosAlterados)
@@ -194,7 +194,7 @@ class BaseDadosTest {
 
         val registosAlterados = TabelaBDEntrega(db).update(
             entrega.toContentValues(),
-            "${BaseColumns._ID}= ?",
+            "${TabelaBDEntrega.CAMPO_ID}= ?",
             arrayOf("${entrega.id}"))
 
         assertEquals(1, registosAlterados)
@@ -210,7 +210,7 @@ class BaseDadosTest {
         insereCliente(db, cliente)
 
         val registosEliminados = TabelaBDCliente(db).delete(
-            "${BaseColumns._ID}=?",
+            "${TabelaBDCliente.CAMPO_ID}=?",
             arrayOf("${cliente.id}"))
 
         assertEquals(1, registosEliminados)
@@ -234,7 +234,7 @@ class BaseDadosTest {
         insereEntrega(db, entrega)
 
         val registosEliminados = TabelaBDEntrega(db).delete(
-            "${BaseColumns._ID}=?",
+            "${TabelaBDEntrega.CAMPO_ID}=?",
             arrayOf("${entrega.id}"))
 
         assertEquals(1, registosEliminados)
@@ -250,7 +250,7 @@ class BaseDadosTest {
         insereLocalidade(db, localidade)
 
         val registosEliminados = TabelaBDLocalidade(db).delete(
-            "${BaseColumns._ID}=?",
+            "${TabelaBDLocalidade.CAMPO_ID}=?",
             arrayOf("${localidade.id}"))
 
         assertEquals(1, registosEliminados)
@@ -266,7 +266,7 @@ class BaseDadosTest {
         insereProduto(db, produto)
 
         val registosEliminados = TabelaBDProduto(db).delete(
-            "${BaseColumns._ID}=?",
+            "${TabelaBDProduto.CAMPO_ID}=?",
             arrayOf("${produto.id}"))
 
         assertEquals(1, registosEliminados)
@@ -283,7 +283,7 @@ class BaseDadosTest {
 
         val cursor = TabelaBDCliente(db).query(
             TabelaBDCliente.TODAS_COLUNAS,
-            "${BaseColumns._ID}=?",
+            "${TabelaBDCliente.CAMPO_ID}=?",
             arrayOf("${cliente.id}"),
             null,
             null,
@@ -308,7 +308,7 @@ class BaseDadosTest {
 
         val cursor = TabelaBDLocalidade(db).query(
             TabelaBDLocalidade.TODAS_COLUNAS,
-            "${BaseColumns._ID}=?",
+            "${TabelaBDLocalidade.CAMPO_ID}=?",
             arrayOf("${localidade.id}"),
             null,
             null,
@@ -332,7 +332,7 @@ class BaseDadosTest {
 
         val cursor = TabelaBDProduto(db).query(
             TabelaBDProduto.TODAS_COLUNAS,
-            "${BaseColumns._ID}=?",
+            "${TabelaBDProduto.CAMPO_ID}=?",
             arrayOf("${produto.id}"),
             null,
             null,
@@ -367,7 +367,7 @@ class BaseDadosTest {
 
         val cursor = TabelaBDEntrega(db).query(
             TabelaBDEntrega.TODAS_COLUNAS,
-            "${BaseColumns._ID}=?",
+            "${TabelaBDEntrega.CAMPO_ID}=?",
             arrayOf("${entrega.id}"),
             null,
             null,

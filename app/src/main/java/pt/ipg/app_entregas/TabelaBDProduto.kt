@@ -12,10 +12,12 @@ open class TabelaBDProduto (db: SQLiteDatabase) : TabelaBD(db, NOME) {
 
     companion object {
         const val NOME = "Produto"
+        const val CAMPO_ID = "$NOME.${BaseColumns._ID}"
 
         const val CAMPO_NOME_PRODUTO = "Nome_Produto"
         const val CAMPO_DESCRICAO_PRODUTO = "Descricao_Produto"
-        val TODAS_COLUNAS = arrayOf(BaseColumns._ID, CAMPO_NOME_PRODUTO, CAMPO_DESCRICAO_PRODUTO)
+
+        val TODAS_COLUNAS = arrayOf(CAMPO_ID, CAMPO_NOME_PRODUTO, CAMPO_DESCRICAO_PRODUTO)
 
     }
 }
