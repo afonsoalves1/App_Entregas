@@ -40,7 +40,7 @@ class ListaEntregasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
 
         LoaderManager.getInstance(this).initLoader(ID_LOADER_ENTREGA, null, this)
 
-        adapterEntregas = AdapterEntregas()
+        adapterEntregas = AdapterEntregas(this)
         binding.recyclerViewEntregas.adapter = adapterEntregas
         binding.recyclerViewEntregas.layoutManager = LinearLayoutManager(requireContext())
 
