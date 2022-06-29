@@ -17,6 +17,20 @@ class TabelaBDEntrega (db: SQLiteDatabase) : TabelaBD(db, NOME) {
                 "FOREIGN KEY ($CAMPO_LOCALIDADE_ID) REFERENCES ${TabelaBDLocalidade.NOME}(${BaseColumns._ID}) ON DELETE RESTRICT)")
     }
 
+    override fun query(
+        columns: Array<String>,
+        selection: String?,
+        selectionArgs: Array<String>?,
+        groupBy: String?,
+        having: String?,
+        orderBy: String?
+    ): Cursor {
+        val queryBuilder = SQLiteQueryBuilder()
+        queryBuilder.tables = "$NOME INNER JOIN ${TabelaBDCliente.NOME} ON ${TabelaBDCliente.CAMPO_ID} = $CAMPO_CLIENTE_ID"
+
+        return queryBuilder.query(db, columns, selection, selectionArgs, groupBy, having, orderBy)
+    }
+
 
     companion object {
         const val NOME = "Entrega"
@@ -30,6 +44,6 @@ class TabelaBDEntrega (db: SQLiteDatabase) : TabelaBD(db, NOME) {
 
         val TODAS_COLUNAS = arrayOf(
             CAMPO_ID, CAMPO_QUANTIDADE, CAMPO_DATA, CAMPO_CLIENTE_ID,
-            CAMPO_PRODUTO_ID, CAMPO_LOCALIDADE_ID)
+            CAMPO_PRODUTO_ID, CAMPO_LOCALIDADE_ID, TabelaBDCliente.CAMPO_NOME,TabelaBDCliente.CAMPO_CONTACTO,TabelaBDCliente.CAMPO_IDADE,TabelaBDCliente.CAMPO_MORADA)
     }
 }
