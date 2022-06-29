@@ -32,8 +32,8 @@ class AdapterEntregas(val fragment: ListaEntregasFragment) : RecyclerView.Adapte
                 textViewQuantidade.text =(entrega?.quantidade ?: "").toString()
                 textViewData.text = entrega?.data ?: ""
                 textViewCliente.text = entrega?.cliente?.nome?: ""
-                textViewProduto.text = "${entrega?.idProduto}"
-                textViewLocalidade.text = "${entrega?.idLocalidade}"
+                textViewProduto.text = entrega?.produto?.nome?: ""
+                textViewLocalidade.text = entrega?.localidade?.nome?:""
             }
     }
 

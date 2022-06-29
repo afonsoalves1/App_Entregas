@@ -10,8 +10,8 @@ import android.provider.BaseColumns
 data class Entrega ( var quantidade: Int,
                      var data: String,
                      var cliente:  Cliente,
-                     var idProduto:Long,
-                     var idLocalidade: Long,
+                     var produto: Produto,
+                     var localidade: Localidade,
                      var id: Long = -1
 ) {
     fun toContentValues() : ContentValues {
@@ -20,8 +20,8 @@ data class Entrega ( var quantidade: Int,
         valores.put(TabelaBDEntrega.CAMPO_QUANTIDADE, quantidade)
         valores.put(TabelaBDEntrega.CAMPO_DATA, data)
         valores.put(TabelaBDEntrega.CAMPO_CLIENTE_ID, cliente.id)
-        valores.put(TabelaBDEntrega.CAMPO_PRODUTO_ID, idProduto)
-        valores.put(TabelaBDEntrega.CAMPO_LOCALIDADE_ID, idLocalidade)
+        valores.put(TabelaBDEntrega.CAMPO_PRODUTO_ID, produto.id)
+        valores.put(TabelaBDEntrega.CAMPO_LOCALIDADE_ID, localidade.id)
 
         return valores
     }
@@ -37,10 +37,10 @@ data class Entrega ( var quantidade: Int,
             val posMorada =  cursor.getColumnIndex(TabelaBDCliente.CAMPO_MORADA)
 
             val posIdProduto = cursor.getColumnIndex(TabelaBDEntrega.CAMPO_PRODUTO_ID)
-            //val posNomeProduto =  cursor.getColumnIndex(TabelaBDProduto.CAMPO_NOME_PRODUTO)
-            //val posDescricao =  cursor.getColumnIndex(TabelaBDProduto.CAMPO_DESCRICAO_PRODUTO)
+            val posNomeProduto =  cursor.getColumnIndex(TabelaBDProduto.CAMPO_NOME_PRODUTO)
+            val posDescricao =  cursor.getColumnIndex(TabelaBDProduto.CAMPO_DESCRICAO_PRODUTO)
             val posIdLocalidade = cursor.getColumnIndex(TabelaBDEntrega.CAMPO_LOCALIDADE_ID)
-            //val posNomeLocalidade =  cursor.getColumnIndex(TabelaBDLocalidade.CAMPO_LOCALIDADE)
+            val posNomeLocalidade =  cursor.getColumnIndex(TabelaBDLocalidade.CAMPO_LOCALIDADE)
 
             val id = cursor.getLong(posId)
             val quantidade = cursor.getInt(posQuantidade)
@@ -51,16 +51,16 @@ data class Entrega ( var quantidade: Int,
             val idadeCliente = cursor.getInt(posIdade)
             val moradaCliente =cursor.getString(posMorada)
             val idProduto = cursor.getLong(posIdProduto)
-            //val nomeProduto = cursor.getString(posNomeProduto)
-            //val descricaoProduto = cursor.getString(posDescricao)
+            val nomeProduto = cursor.getString(posNomeProduto)
+            val descricaoProduto = cursor.getString(posDescricao)
             val idLocalidade = cursor.getLong(posIdLocalidade)
-            //val nomeLocalidade = cursor.getString(posNomeLocalidade)
+            val nomeLocalidade = cursor.getString(posNomeLocalidade)
 
             val cliente = Cliente(nomeCliente, contactoCliente, idadeCliente,moradaCliente, idCliente)
-            //val produto = Produto(nomeProduto, descricaoProduto,idProduto)
-            //val localidade = Localidade(nomeLocalidade, idLocalidade)
+            val produto = Produto(nomeProduto, descricaoProduto,idProduto)
+            val localidade = Localidade(nomeLocalidade, idLocalidade)
 
-            return Entrega(quantidade,data, cliente ,idProduto,idLocalidade,id)
+            return Entrega(quantidade,data, cliente ,produto,localidade,id)
         }
 
     }}

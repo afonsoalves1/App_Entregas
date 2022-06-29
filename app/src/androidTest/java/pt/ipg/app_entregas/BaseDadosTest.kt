@@ -93,7 +93,7 @@ class BaseDadosTest {
         val localidade = Localidade("Guarda" )
         insereLocalidade(db, localidade)
 
-        insereEntrega(db, Entrega(5, "13-02-22", cliente ,produto.id,localidade.id))
+        insereEntrega(db, Entrega(5, "13-02-22", cliente ,produto,localidade))
         db.close()
     }
 
@@ -182,14 +182,14 @@ class BaseDadosTest {
         val localidadeCovilha = Localidade("Covilha" )
         insereLocalidade(db, localidadeCovilha)
 
-        val entrega = Entrega(6,"13-02-22",clienteVasco , produtoCaixas.id, localidadeGuarda.id  )
+        val entrega = Entrega(6,"13-02-22",clienteVasco , produtoCaixas, localidadeGuarda  )
         insereEntrega(db, entrega)
 
         entrega.quantidade = 10
         entrega.data = "14/06/2022"
         entrega.cliente = clienteAfonso
-        entrega.idProduto = produtoArmarios.id
-        entrega.idLocalidade = localidadeCovilha.id
+        entrega.produto = produtoArmarios
+        entrega.localidade = localidadeCovilha
 
         val registosAlterados = TabelaBDEntrega(db).update(
             entrega.toContentValues(),
@@ -229,7 +229,7 @@ class BaseDadosTest {
         val produto = Produto("Caixas", "Fragil" )
         insereProduto(db, produto)
 
-        val entrega = Entrega (2,"23-06-22", cliente, localidade.id, produto.id)
+        val entrega = Entrega (2,"23-06-22", cliente, produto, localidade)
         insereEntrega(db, entrega)
 
         val registosEliminados = TabelaBDEntrega(db).delete(
@@ -355,13 +355,13 @@ class BaseDadosTest {
         val cliente = Cliente("Afonso",966666666,25,"Guarda")
         insereCliente(db, cliente)
 
-        val localidade = Localidade("Lisboa")
-        insereLocalidade(db, localidade)
-
         val produto = Produto("Caixas","Fragil")
         insereProduto(db, produto)
 
-        val entrega = Entrega(2,"24/06/2022", cliente ,produto.id, localidade.id )
+        val localidade = Localidade("Lisboa")
+        insereLocalidade(db, localidade)
+
+        val entrega = Entrega(2,"24/06/2022", cliente ,produto, localidade)
         insereEntrega(db, entrega)
 
         val cursor = TabelaBDEntrega(db).query(
