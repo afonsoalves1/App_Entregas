@@ -49,7 +49,7 @@ class AdapterEntregas(val fragment: ListaEntregasFragment) : RecyclerView.Adapte
     }
 
     /**
-     * Called by RecyclerView to display the data at the specified position. This method should
+     *  Called by RecyclerView to display the data at the specified position. This method should
      * update the contents of the [ViewHolder.itemView] to reflect the item at the given
      * position.
      *
