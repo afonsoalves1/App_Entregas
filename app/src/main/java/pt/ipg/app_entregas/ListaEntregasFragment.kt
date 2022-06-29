@@ -10,6 +10,7 @@ import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import pt.ipg.app_entregas.databinding.FragmentListaEntregasBinding
 
 
@@ -19,7 +20,7 @@ import pt.ipg.app_entregas.databinding.FragmentListaEntregasBinding
 class ListaEntregasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
 
     private var _binding: FragmentListaEntregasBinding? = null
-
+    private var adapterEntregas : AdapterEntregas? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -38,6 +39,11 @@ class ListaEntregasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
         super.onViewCreated(view, savedInstanceState)
 
         LoaderManager.getInstance(this).initLoader(ID_LOADER_ENTREGA, null, this)
+
+        adapterEntregas = AdapterEntregas()
+        binding.recyclerViewEntregas.adapter = adapterEntregas
+        binding.recyclerViewEntregas.layoutManager = LinearLayoutManager(requireContext())
+
     }
 
     override fun onDestroyView() {
