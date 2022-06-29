@@ -130,7 +130,7 @@ class ListaEntregasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
      * @param loader The Loader that is being reset.
      */
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        TODO("Not yet implemented")
+        adapterEntregas!!.cursor = null
     }
     companion object {
         const val ID_LOADER_ENTREGA = 0
