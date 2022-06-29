@@ -3,6 +3,7 @@ package pt.ipg.app_entregas
 import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class AdapterEntregas(val fragment: ListaEntregasFragment) : RecyclerView.Adapter<AdapterEntregas.ViewHolderEntrega>()  {
@@ -16,8 +17,24 @@ class AdapterEntregas(val fragment: ListaEntregasFragment) : RecyclerView.Adapte
             }
         }
 
-    class ViewHolderEntrega(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolderEntrega(itemEntrega: View) : RecyclerView.ViewHolder(itemEntrega) {
+        val textViewQuantidade = itemEntrega.findViewById<TextView>(R.id.textViewQuantidade)
+        val textViewData = itemEntrega.findViewById<TextView>(R.id.textViewData)
+        val textViewCliente = itemEntrega.findViewById<TextView>(R.id.textViewCliente)
+        val textViewProduto = itemEntrega.findViewById<TextView>(R.id.textViewProduto)
+        val textViewLocalidade = itemEntrega.findViewById<TextView>(R.id.textViewLocalidade)
 
+        var entrega : Entrega? = null
+            get() = field
+            set(value: Entrega?) {
+                field = value
+
+                textViewQuantidade.text =(entrega?.quantidade ?: "").toString()
+                textViewData.text = entrega?.data ?: ""
+                textViewCliente.text = "${entrega?.idCliente}"
+                textViewProduto.text = "${entrega?.idProduto}"
+                textViewLocalidade.text = "${entrega?.idLocalidade}"
+            }
     }
 
     /**
