@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import pt.ipg.app_entregas.databinding.FragmentListaEntregasBinding
@@ -36,9 +37,7 @@ class ListaEntregasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //binding.buttonSecond.setOnClickListener {
-        //    findNavController().navigate(R.id.action_ListaEntregas_to_MenuPrincipal)
-        //}
+        LoaderManager.getInstance(this).initLoader(ID_LOADER_ENTREGA, null, this)
     }
 
     override fun onDestroyView() {
@@ -56,9 +55,16 @@ class ListaEntregasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
      * @param args Any arguments supplied by the caller.
      * @return Return a new Loader instance that is ready to start loading.
      */
-    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-        TODO("Not yet implemented")
-    }
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> =
+        CursorLoader(
+            requireContext(),
+            ContentProviderEntregas.ENDERECO_ENTREGA,
+            TabelaBDEntrega.TODAS_COLUNAS,
+            null,
+            null,
+            "${TabelaBDEntrega.CAMPO_DATA}"
+        )
+
 
     /**
      * Called when a previously created loader has finished its load.  Note
@@ -119,5 +125,8 @@ class ListaEntregasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
      */
     override fun onLoaderReset(loader: Loader<Cursor>) {
         TODO("Not yet implemented")
+    }
+    companion object {
+        const val ID_LOADER_ENTREGA = 0
     }
 }

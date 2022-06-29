@@ -280,16 +280,21 @@ class ContentProviderEntregas: ContentProvider () {
     }
 
     companion object {
-        const val AUTHORITY = "pt.ipg.app_entregas"
+        private const val AUTHORITY = "pt.ipg.app_entregas"
 
-        const val URI_CLIENTE = 100
-        const val URI_CLIENTE_ESPECIFICO = 101
+        private const val URI_CLIENTE = 100
+        private const val URI_CLIENTE_ESPECIFICO = 101
 
-        const val URI_ENTREGA = 200
-        const val URI_ENTREGA_ESPECIFICA = 201
+        private const val URI_ENTREGA = 200
+        private const val URI_ENTREGA_ESPECIFICA = 201
 
-        const val UNICO_REGISTO = "vnd.android.cursor.item"
-        const val MULTIPLOS_REGISTOS = "vnd.android.cursor.dir"
+        private const val UNICO_REGISTO = "vnd.android.cursor.item"
+        private const val MULTIPLOS_REGISTOS = "vnd.android.cursor.dir"
+
+        private val ENDERECO_BASE = Uri.parse("content://$AUTHORITY")
+        val ENDERECO_ENTREGA = Uri.withAppendedPath(ENDERECO_BASE, TabelaBDEntrega.NOME)
+        val ENDERECO_CLIENTE = Uri.withAppendedPath(ENDERECO_BASE, TabelaBDCliente.NOME)
+
 
         fun getUriMatcher() : UriMatcher {
             var uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
