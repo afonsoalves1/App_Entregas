@@ -13,11 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App_Entregas"
         tools:targetApi="31">
-        <activity
-            android:name=".activity_main"
-            android:exported="false"
-            android:label="@string/title_activity_main"
-            android:theme="@style/Theme.App_Entregas.NoActionBar" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

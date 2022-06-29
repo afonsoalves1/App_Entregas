@@ -33,9 +33,9 @@ class ListaEntregasFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_ListaEntregas_to_MenuPrincipal)
-        }
+        //binding.buttonSecond.setOnClickListener {
+        //    findNavController().navigate(R.id.action_ListaEntregas_to_MenuPrincipal)
+        //}
     }
 
     override fun onDestroyView() {
