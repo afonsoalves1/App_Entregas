@@ -2,12 +2,9 @@
     <string name="app_name">App_Entregas</string>
     <string name="title_activity_main">activity_main</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="menu_principal_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="menu_principal_label">Menu principas</string>
+    <string name="lista_entregas_label">Entregas</string>
     <string name="clientes">Cliente</string>
     <string name="entregas">Entrega</string>
     <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
