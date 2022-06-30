@@ -7,4 +7,10 @@
     <string name="clientes">Cliente</string>
     <string name="entregas">Entrega</string>
     <string name="previous">Previous</string>
+    <string name="inserir" />
+    <string name="alterar" />
+    <string name="eliminar" />
+    <string name="guardar" />
+    <string name="cancelar" />
+    <string name="action_settings" />
 </resources>

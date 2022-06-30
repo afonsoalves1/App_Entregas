@@ -24,17 +24,17 @@ class AdapterEntregas(val fragment: ListaEntregasFragment) : RecyclerView.Adapte
         val textViewProduto = itemEntrega.findViewById<TextView>(R.id.textViewProduto)
         val textViewLocalidade = itemEntrega.findViewById<TextView>(R.id.textViewLocalidade)
 
-         var entrega: Entrega? = null
-        get() = field
-        set(value: Entrega?){
-            field = value
+        var entrega: Entrega? = null
+            get() = field
+            set(value: Entrega?) {
+                field = value
 
-            textViewQuantidade.text = (entrega?.quantidade?:"").toString()
-            textViewData.text = entrega?.data?: ""
-            textViewCliente.text = entrega?.cliente?.nome?:""
-            textViewProduto.text = entrega?.produto?.nome?:""
-            textViewLocalidade.text = entrega?.localidade?.nome?:""
-        }
+                textViewQuantidade.text = (entrega?.quantidade ?: "").toString()
+                textViewData.text = entrega?.data ?: ""
+                textViewCliente.text = entrega?.cliente?.nome ?: ""
+                textViewProduto.text = entrega?.produto?.nome ?: ""
+                textViewLocalidade.text = entrega?.localidade?.nome ?: ""
+            }
     }
 
     /**
@@ -87,7 +87,8 @@ class AdapterEntregas(val fragment: ListaEntregasFragment) : RecyclerView.Adapte
      * @param position The position of the item within the adapter's data set.
      */
     override fun onBindViewHolder(holder: ViewHolderEntrega, position: Int) {
-        TODO("Not yet implemented")
+        cursor!!.moveToPosition(position)
+        holder.entrega = Entrega.fromCursor(cursor!!)
     }
 
     /**
