@@ -44,6 +44,8 @@ class ListaEntregasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
         binding.recyclerViewEntregas.adapter = adapterEntregas
         binding.recyclerViewEntregas.layoutManager = LinearLayoutManager(requireContext())
 
+        val activity = activity as MainActivity
+        activity.idMenuAtual = R.menu.menu_lista
     }
 
     override fun onDestroyView() {
