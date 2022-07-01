@@ -93,8 +93,19 @@ class BaseDadosTest {
         val localidade = Localidade("Guarda" )
         insereLocalidade(db, localidade)
 
-        insereEntrega(db, Entrega(5, "13-02-22", cliente ,produto,localidade))
-        db.close()
+        val cliente2 = Cliente("Vasco", 988888888 ,30,"Lisboa")
+        insereCliente(db, cliente)
+
+        val produto2 = Produto("Caixas", "Fragil" )
+        insereProduto(db, produto)
+
+        val localidade2 = Localidade("Guarda" )
+        insereLocalidade(db, localidade)
+
+        val entrega = Entrega(5, "13-02-22", cliente ,produto,localidade)
+        insereEntrega(db, entrega)
+        val entrega2 =Entrega(5, "13-02-22", cliente2 ,produto2,localidade2)
+        insereEntrega(db, entrega2)
     }
 
     @Test

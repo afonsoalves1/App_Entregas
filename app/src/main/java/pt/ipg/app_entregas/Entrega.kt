@@ -1,9 +1,6 @@
 package pt.ipg.app_entregas
 
 import android.content.ContentValues
-import android.database.sqlite.SQLiteDatabase
-import java.text.DateFormat
-import java.util.*
 import android.database.Cursor
 import android.provider.BaseColumns
 

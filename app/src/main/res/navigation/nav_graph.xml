@@ -27,6 +27,20 @@
         <action
             android:id="@+id/action_ListaEntregas_to_MenuPrincipal"
             app:destination="@id/MenuPrincipalFragment" />
+        <action
+            android:id="@+id/action_ListaEntregasFragment_to_fragment_editar_entrega33"
+            app:destination="@id/fragment_editar_entrega3" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/fragment_editar_entrega3"
+        android:name="pt.ipg.app_entregas.EditarEntregaFragment"
+        android:label="@string/editar_livro_label"
+        tools:layout="@layout/fragment_editar_entrega" >
+        <action
+            android:id="@+id/action_fragment_editar_entrega3_to_ListaEntregasFragment"
+            app:destination="@id/ListaEntregasFragment" />
     </fragment>
     <fragment
         android:id="@+id/listaClienteFragment"

@@ -4,6 +4,7 @@ import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
@@ -44,6 +45,9 @@ class ListaEntregasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
         binding.recyclerViewEntregas.adapter = adapterEntregas
         binding.recyclerViewEntregas.layoutManager = LinearLayoutManager(requireContext())
 
+        val activity = activity as MainActivity
+        activity.fragment = this
+        activity.idMenuAtual = R.menu.menu_lista
     }
 
     override fun onDestroyView() {
@@ -132,6 +136,18 @@ class ListaEntregasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
     override fun onLoaderReset(loader: Loader<Cursor>) {
         adapterEntregas!!.cursor = null
     }
+
+    fun processaOpcaoMenu(item: MenuItem) : Boolean =
+        when(item.itemId) {
+            R.id.action_inserir -> {
+                findNavController().navigate(R.id.action_ListaEntregasFragment_to_fragment_editar_entrega33)
+                true
+            }
+            R.id.action_alterar -> true
+            R.id.action_eliminar -> true
+            else -> false
+        }
+
     companion object {
         const val ID_LOADER_ENTREGA = 0
     }
