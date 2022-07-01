@@ -129,13 +129,20 @@ class ContentProviderEntregas: ContentProvider () {
 
         val cursor = when (getUriMatcher().match(uri)) {
             URI_ENTREGA -> TabelaBDEntrega(db).query(colunas, selection, argsSeleccao, null, null, sortOrder)
-            URI_CLIENTE -> TabelaBDCliente(db).query(colunas, selection, argsSeleccao, null, null, sortOrder)
             URI_ENTREGA_ESPECIFICA -> TabelaBDEntrega(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+
+            URI_CLIENTE -> TabelaBDCliente(db).query(colunas, selection, argsSeleccao, null, null, sortOrder)
             URI_CLIENTE_ESPECIFICO -> TabelaBDCliente(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+
+            URI_PRODUTO -> TabelaBDProduto(db).query(colunas, selection, argsSeleccao, null, null, sortOrder)
+            URI_PRODUTO_ESPECIFICO -> TabelaBDProduto(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+
+            URI_LOCALIDADE -> TabelaBDLocalidade(db).query(colunas, selection, argsSeleccao, null, null, sortOrder)
+            URI_LOCALIDADE_ESPECIFICA -> TabelaBDLocalidade(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+
+
             else -> null
         }
-
-
 
         return cursor
     }
@@ -162,9 +169,18 @@ class ContentProviderEntregas: ContentProvider () {
     override fun getType(uri: Uri): String? =
         when (getUriMatcher().match(uri)) {
             URI_ENTREGA -> "$MULTIPLOS_REGISTOS/${TabelaBDEntrega.NOME}"
-            URI_CLIENTE -> "$MULTIPLOS_REGISTOS/${TabelaBDCliente.NOME}"
             URI_ENTREGA_ESPECIFICA -> "$UNICO_REGISTO/${TabelaBDEntrega.NOME}"
+
+            URI_CLIENTE -> "$MULTIPLOS_REGISTOS/${TabelaBDCliente.NOME}"
             URI_CLIENTE_ESPECIFICO -> "$UNICO_REGISTO/${TabelaBDCliente.NOME}"
+
+            URI_PRODUTO -> "$MULTIPLOS_REGISTOS/${TabelaBDProduto.NOME}"
+            URI_PRODUTO_ESPECIFICO -> "$UNICO_REGISTO/${TabelaBDProduto.NOME}"
+
+            URI_LOCALIDADE -> "$MULTIPLOS_REGISTOS/${TabelaBDLocalidade.NOME}"
+            URI_LOCALIDADE_ESPECIFICA -> "$UNICO_REGISTO/${TabelaBDLocalidade.NOME}"
+
+
             else -> null
         }
 
@@ -191,6 +207,8 @@ class ContentProviderEntregas: ContentProvider () {
         val id = when (getUriMatcher().match(uri)) {
             URI_ENTREGA -> TabelaBDEntrega(db).insert(values)
             URI_CLIENTE -> TabelaBDCliente(db).insert(values)
+            URI_PRODUTO -> TabelaBDProduto(db).insert(values)
+            URI_LOCALIDADE -> TabelaBDLocalidade(db).insert(values)
             else -> -1
         }
 
@@ -233,6 +251,8 @@ class ContentProviderEntregas: ContentProvider () {
         val registosApagados = when (getUriMatcher().match(uri)) {
             URI_ENTREGA_ESPECIFICA -> TabelaBDEntrega(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
             URI_CLIENTE_ESPECIFICO -> TabelaBDCliente(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_PRODUTO_ESPECIFICO -> TabelaBDProduto(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_LOCALIDADE_ESPECIFICA -> TabelaBDLocalidade(db).delete("${BaseColumns._ID}=?", arrayOf("${id}"))
             else -> 0
         }
 
@@ -271,6 +291,8 @@ class ContentProviderEntregas: ContentProvider () {
         val registosAlterados = when (getUriMatcher().match(uri)) {
             URI_ENTREGA_ESPECIFICA -> TabelaBDEntrega(db).update(values, "${BaseColumns._ID}=?", arrayOf("${id}"))
             URI_CLIENTE_ESPECIFICO -> TabelaBDCliente(db).update(values,"${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_PRODUTO_ESPECIFICO -> TabelaBDProduto(db).update(values,"${BaseColumns._ID}=?", arrayOf("${id}"))
+            URI_LOCALIDADE_ESPECIFICA -> TabelaBDLocalidade(db).update(values,"${BaseColumns._ID}=?", arrayOf("${id}"))
             else -> 0
         }
 
@@ -288,12 +310,23 @@ class ContentProviderEntregas: ContentProvider () {
         private const val URI_ENTREGA = 200
         private const val URI_ENTREGA_ESPECIFICA = 201
 
+        private const val URI_PRODUTO = 300
+        private const val URI_PRODUTO_ESPECIFICO = 301
+
+        private const val URI_LOCALIDADE = 400
+        private const val URI_LOCALIDADE_ESPECIFICA = 401
+
         private const val UNICO_REGISTO = "vnd.android.cursor.item"
         private const val MULTIPLOS_REGISTOS = "vnd.android.cursor.dir"
 
         private val ENDERECO_BASE = Uri.parse("content://$AUTHORITY")
         val ENDERECO_ENTREGA = Uri.withAppendedPath(ENDERECO_BASE, TabelaBDEntrega.NOME)
         val ENDERECO_CLIENTE = Uri.withAppendedPath(ENDERECO_BASE, TabelaBDCliente.NOME)
+        val ENDERECO_PRODUTO = Uri.withAppendedPath(ENDERECO_BASE, TabelaBDProduto.NOME)
+        val ENDERECO_LOCALIDADE = Uri.withAppendedPath(ENDERECO_BASE, TabelaBDLocalidade.NOME)
+
+
+
 
 
         fun getUriMatcher() : UriMatcher {
@@ -304,6 +337,12 @@ class ContentProviderEntregas: ContentProvider () {
 
             uriMatcher.addURI(AUTHORITY, TabelaBDEntrega.NOME, URI_ENTREGA)
             uriMatcher.addURI(AUTHORITY, "${TabelaBDEntrega.NOME}/#", URI_ENTREGA_ESPECIFICA)
+
+            uriMatcher.addURI(AUTHORITY, TabelaBDProduto.NOME, URI_PRODUTO)
+            uriMatcher.addURI(AUTHORITY, "${TabelaBDProduto.NOME}/#", URI_PRODUTO_ESPECIFICO)
+
+            uriMatcher.addURI(AUTHORITY, TabelaBDLocalidade.NOME, URI_LOCALIDADE)
+            uriMatcher.addURI(AUTHORITY, "${TabelaBDLocalidade.NOME}/#", URI_LOCALIDADE_ESPECIFICA)
 
             return uriMatcher
         }

@@ -7,4 +7,23 @@
     <string name="clientes">Cliente</string>
     <string name="entregas">Entrega</string>
     <string name="previous">Previous</string>
+
+    <string name="cliente">Nome Cliente</string>
+    <string name="contacto">Contacto</string>
+    <string name="idade">Idade</string>
+    <string name="morada">Morada</string>
+
+    <string name="campo_obrigatorio">Campo Obrigatorio</string>
+
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="create">Criar</string>
+    <string name="update">Update</string>
+    <string name="delete">Apagar</string>
+
+    <string name="insere_cliente">Insere Cliente</string>
+    <string name="editar_cliente">Editar Cliente</string>
+    <string name="apagar_cliente">Apagar Cliente</string>
+
+
 </resources>

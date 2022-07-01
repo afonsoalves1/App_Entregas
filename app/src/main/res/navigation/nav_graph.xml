@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_MenuPrincipal_to_ListaEntregas"
             app:destination="@id/ListaEntregasFragment" />
+        <action
+            android:id="@+id/action_MenuPrincipalFragment_to_listaClienteFragment"
+            app:destination="@id/listaClienteFragment" />
     </fragment>
     <fragment
         android:id="@+id/ListaEntregasFragment"
@@ -24,5 +27,26 @@
         <action
             android:id="@+id/action_ListaEntregas_to_MenuPrincipal"
             app:destination="@id/MenuPrincipalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaClienteFragment"
+        android:name="pt.ipg.app_entregas.ListaClienteFragment"
+        android:label="fragment_lista_clientes"
+        tools:layout="@layout/fragment_lista_clientes" >
+        <action
+            android:id="@+id/action_listaClienteFragment_to_editarClienteFragment"
+            app:destination="@id/editarClienteFragment" />
+        <action
+            android:id="@+id/action_listaClienteFragment_to_MenuPrincipalFragment"
+            app:destination="@id/MenuPrincipalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editarClienteFragment"
+        android:name="pt.ipg.app_entregas.EditarClienteFragment"
+        android:label="fragment_editar_cliente"
+        tools:layout="@layout/fragment_editar_cliente" >
+        <action
+            android:id="@+id/action_editarClienteFragment_to_listaClienteFragment"
+            app:destination="@id/listaClienteFragment" />
     </fragment>
 </navigation>
