@@ -28,4 +28,14 @@
         app:layout_constraintEnd_toEndOf="@+id/buttonEntregas"
         app:layout_constraintStart_toStartOf="@+id/buttonEntregas"
         app:layout_constraintTop_toBottomOf="@+id/buttonEntregas" />
+
+    <Button
+        android:id="@+id/buttonProdutos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/produtos"
+        app:layout_constraintEnd_toEndOf="@id/buttonClientes"
+        app:layout_constraintStart_toStartOf="@id/buttonEntregas"
+        app:layout_constraintTop_toBottomOf="@+id/buttonClientes" />
 </androidx.constraintlayout.widget.ConstraintLayout>

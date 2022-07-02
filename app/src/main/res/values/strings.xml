@@ -7,6 +7,7 @@
 
     <string name="clientes">Cliente</string>
     <string name="entregas">Entrega</string>
+    <string name="produtos">Produto</string>
     <string name="previous">Previous</string>
 
     <string name="cliente">Nome Cliente</string>
@@ -37,7 +38,10 @@
 
     <string name="sure">Sure</string>
 
-
+    <string name="produto">Produto</string>
+    <string name="descricao">Descrição</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
