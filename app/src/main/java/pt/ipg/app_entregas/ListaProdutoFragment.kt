@@ -1,59 +1,110 @@
 package pt.ipg.app_entregas
 
+import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
+import androidx.loader.content.Loader
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import pt.ipg.app_entregas.databinding.FragmentListaProdutoBinding
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ListaProdutoFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ListaProdutoFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+class ListaProdutoFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+
+    var produtoSelecionado: Produto? = null
+    get() = field
+    set(value) {
+        field = value
+        (requireActivity() as MainActivity).mostraOpcoesAlterarEliminar(field != null)
     }
+
+    private var _binding: FragmentListaProdutoBinding? = null
+
+    private var adapterProdutos : AdapterProdutos? = null
+
+    private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lista_produto, container, false)
+
+        _binding = FragmentListaProdutoBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ListaProdutoFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ListaProdutoFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        LoaderManager.getInstance(this).initLoader(ID_LOADER_PRODUTO, null, this)
+
+        adapterProdutos = AdapterProdutos(this)
+        binding .recyclerViewProdutos.adapter = adapterProdutos
+        binding.recyclerViewProdutos.layoutManager = LinearLayoutManager(requireContext())
+
+        val activity = activity as MainActivity
+        activity.fragment = this
+        activity.idMenuAtual = R.menu.menu_lista
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> =
+        CursorLoader(
+            requireContext(),
+            ContentProviderEntregas.ENDERECO_PRODUTO,
+            TabelaBDProduto.TODAS_COLUNAS,
+            null,
+            null,
+            "${TabelaBDProduto.CAMPO_NOME_PRODUTO}"
+        )
+
+    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
+        adapterProdutos!!.cursor = data
+    }
+
+    override fun onLoaderReset(loader: Loader<Cursor>) {
+        if (_binding == null) return
+        adapterProdutos!!.cursor = null
+    }
+
+    fun processaOpcaoMenu(item: MenuItem) : Boolean =
+        when(item.itemId) {
+            R.id.action_inserir -> {
+                val acao = ListaProdutoFragmentDirections.actionListaProdutoFragmentToEditarProdutoFragment()
+                findNavController().navigate(acao)
+                (activity as MainActivity).atualizaTitulo(R.string.insere_produto)
+                true
+            }
+            R.id.action_alterar -> {
+                val acao = ListaProdutoFragmentDirections.actionListaProdutoFragmentToEditarProdutoFragment(produtoSelecionado)
+                findNavController().navigate(acao)
+                (activity as MainActivity).atualizaTitulo(R.string.editar_produto)
+                true
+            }
+            R.id.action_guardar -> {
+                val acao = ListaProdutoFragmentDirections.actionListaProdutoFragmentToEliminarProdutosFragment(produtoSelecionado!!)
+                findNavController().navigate(acao)
+                (activity as MainActivity).atualizaTitulo(R.string.apagar_produto)
+                true
+            }
+
+            else -> false
+        }
+
+    companion object {
+    const val ID_LOADER_PRODUTO = 0
+}
+
 }

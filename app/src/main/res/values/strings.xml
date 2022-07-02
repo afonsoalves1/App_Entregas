@@ -40,8 +40,15 @@
 
     <string name="produto">Produto</string>
     <string name="descricao">Descrição</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="insere_produto">Insere Produto</string>
+    <string name="editar_produto">Editar Produto</string>
+    <string name="eliminar_produto">Eliminar Produto</string>
+    <string name="nome_produto">Nome Produto</string>
+    <string name="descricao_produto">Descricao Produto</string>
+
+    <string name="delete_produto">Eliminar Produto</string>
+    <string name="apagar_produto">Eliminar Produto</string>
 
 
 </resources>

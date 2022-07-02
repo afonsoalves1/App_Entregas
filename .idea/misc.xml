@@ -10,14 +10,15 @@
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/fragment_editar_entrega.xml" value="0.2" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/fragment_editar_produtos.xml" value="0.1703125" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/fragment_eliminar_cliente.xml" value="0.2" />
+        <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/fragment_eliminar_produtos.xml" value="0.14990942028985507" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/fragment_inserir_entrega.xml" value="0.25" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/fragment_lista_clientes.xml" value="0.21965579710144928" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/fragment_lista_entregas.xml" value="0.18020833333333333" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/fragment_lista_produto.xml" value="0.14583333333333334" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/fragment_menu_principal.xml" value="0.176" />
-        <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/item_cliente.xml" value="0.264" />
+        <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/item_cliente.xml" value="0.136" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/item_entrega.xml" value="0.264" />
-        <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/item_produto.xml" value="0.16927083333333334" />
+        <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/item_produto.xml" value="0.16799999999999998" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/menu/menu_edicao.xml" value="0.2" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/menu/menu_eliminar.xml" value="0.264" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/menu/menu_lista.xml" value="0.2" />
