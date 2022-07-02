@@ -37,9 +37,9 @@ class AdapterClientes (val fragment: ListaClienteFragment): RecyclerView.Adapter
                 field = value
 
                 textViewNome.text = cliente?.nome ?: ""
-                textViewContacto.text = (cliente?.contacto?: "") as CharSequence?
+                textViewContacto.text = (cliente?.contacto?: "").toString()
                 textViewMorada.text = cliente?.morada ?: ""
-                textViewIdade.text = (cliente?.idade ?: "") as CharSequence?
+                textViewIdade.text = (cliente?.idade ?: "").toString()
             }
 
         override fun onClick(v: View?) {

@@ -3,12 +3,13 @@ package pt.ipg.app_entregas
 import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
+import java.io.Serializable
 
 data class Cliente (var nome: String,
-                    var contacto: Int,
+                    var contacto: String,
                     var idade: Int,
                     var morada: String,
-                    var id: Long = -1 )
+                    var id: Long = -1 ) : Serializable
 {
     fun toContentValues() : ContentValues{
         val valores = ContentValues()
@@ -31,7 +32,7 @@ data class Cliente (var nome: String,
 
             val id = cursor.getLong(posId)
             val nome = cursor.getString(posNome)
-            val contacto = cursor.getInt(posContacto)
+            val contacto = cursor.getString(posContacto)
             val idade = cursor.getInt(posIdade)
             val morada = cursor.getString(posMorada)
 

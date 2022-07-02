@@ -44,7 +44,7 @@ data class Entrega ( var quantidade: Int,
             val data = cursor.getString(posData)
             val idCliente = cursor.getLong(posIdCliente)
             val nomeCliente = cursor.getString(posNomeCliente)
-            val contactoCliente = cursor.getInt(posContacto)
+            val contactoCliente = cursor.getString(posContacto)
             val idadeCliente = cursor.getInt(posIdade)
             val moradaCliente =cursor.getString(posMorada)
             val idProduto = cursor.getLong(posIdProduto)

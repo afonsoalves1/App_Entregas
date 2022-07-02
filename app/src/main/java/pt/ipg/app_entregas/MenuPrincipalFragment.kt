@@ -32,9 +32,7 @@ class MenuPrincipalFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonEntregas.setOnClickListener {
-            findNavController().navigate(R.id.action_MenuPrincipal_to_ListaEntregas)
-        }
+
         binding.buttonClientes.setOnClickListener {
             findNavController().navigate(R.id.action_MenuPrincipalFragment_to_listaClienteFragment)
         }

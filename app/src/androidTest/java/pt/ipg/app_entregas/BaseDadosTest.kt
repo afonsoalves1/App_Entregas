@@ -69,7 +69,7 @@ class BaseDadosTest {
     @Test
     fun consegueInserirCliente() {
         val db = getWritableDatabase()
-        insereCliente(db, Cliente("Afonso", 966666666, 24,"Guarda"))
+        insereCliente(db, Cliente("Afonso", "966666666", 24,"Guarda"))
         db.close()
     }
 
@@ -84,7 +84,7 @@ class BaseDadosTest {
     fun consegueInserirEntrega() {
         val db = getWritableDatabase()
 
-        val cliente = Cliente("Vasco", 988888888 ,30,"Lisboa")
+        val cliente = Cliente("Vasco", "988888888" ,30,"Lisboa")
         insereCliente(db, cliente)
 
         val produto = Produto("Caixas", "Fragil" )
@@ -93,7 +93,7 @@ class BaseDadosTest {
         val localidade = Localidade("Guarda" )
         insereLocalidade(db, localidade)
 
-        val cliente2 = Cliente("Vasco", 988888888 ,30,"Lisboa")
+        val cliente2 = Cliente("Vasco", "988888888" ,30,"Lisboa")
         insereCliente(db, cliente)
 
         val produto2 = Produto("Caixas", "Fragil" )
@@ -133,11 +133,11 @@ class BaseDadosTest {
 
         val db = getWritableDatabase()
 
-        val cliente = Cliente("Afonso",966666666,24,"Guarda")
+        val cliente = Cliente("Afonso","966666666",24,"Guarda")
         insereCliente(db, cliente)
 
         cliente.nome = "Manel"
-        cliente.contacto = 988888888
+        cliente.contacto = "988888888"
         cliente.idade = 25
         cliente.morada = "Covilhã"
 
@@ -175,10 +175,10 @@ class BaseDadosTest {
     fun consegueAlterarEntrega() {
         val db = getWritableDatabase()
 
-        val clienteVasco = Cliente("Vasco", 988888888 ,30,"Lisboa")
+        val clienteVasco = Cliente("Vasco", "988888888" ,30,"Lisboa")
         insereCliente(db, clienteVasco)
 
-        val clienteAfonso = Cliente("Afonso", 988888888 ,30,"Lisboa")
+        val clienteAfonso = Cliente("Afonso", "988888888" ,30,"Lisboa")
         insereCliente(db, clienteAfonso)
 
         val produtoCaixas = Produto("Caixas", "Fragil" )
@@ -216,7 +216,7 @@ class BaseDadosTest {
     fun consegueEliminarCliente() {
         val db = getWritableDatabase()
 
-        val cliente = Cliente ("Afonso",923234234,30,"Porto")
+        val cliente = Cliente ("Afonso","923234234",30,"Porto")
         insereCliente(db, cliente)
 
         val registosEliminados = TabelaBDCliente(db).delete(
@@ -231,7 +231,7 @@ class BaseDadosTest {
     fun consegueEliminarEntrega() {
         val db = getWritableDatabase()
 
-        val cliente = Cliente ("Afonso",923234234,30,"Porto")
+        val cliente = Cliente ("Afonso","923234234",30,"Porto")
         insereCliente(db, cliente)
 
         val localidade = Localidade("Guarda" )
@@ -288,7 +288,7 @@ class BaseDadosTest {
     fun consegueLerClientes() {
         val db = getWritableDatabase()
 
-        val cliente = Cliente("Afonso",966666666,25,"Guarda")
+        val cliente = Cliente("Afonso","966666666",25,"Guarda")
         insereCliente(db, cliente)
 
         val cursor = TabelaBDCliente(db).query(
@@ -363,7 +363,7 @@ class BaseDadosTest {
     fun consegueLerEntregas() {
         val db = getWritableDatabase()
 
-        val cliente = Cliente("Afonso",966666666,25,"Guarda")
+        val cliente = Cliente("Afonso","966666666",25,"Guarda")
         insereCliente(db, cliente)
 
         val produto = Produto("Caixas","Fragil")

@@ -12,36 +12,11 @@
         tools:layout="@layout/fragment_menu_principal">
 
         <action
-            android:id="@+id/action_MenuPrincipal_to_ListaEntregas"
-            app:destination="@id/ListaEntregasFragment" />
-        <action
             android:id="@+id/action_MenuPrincipalFragment_to_listaClienteFragment"
             app:destination="@id/listaClienteFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/ListaEntregasFragment"
-        android:name="pt.ipg.app_entregas.ListaEntregasFragment"
-        android:label="@string/lista_entregas_label"
-        tools:layout="@layout/fragment_lista_entregas">
-
-        <action
-            android:id="@+id/action_ListaEntregas_to_MenuPrincipal"
-            app:destination="@id/MenuPrincipalFragment" />
-        <action
-            android:id="@+id/action_ListaEntregasFragment_to_fragment_editar_entrega33"
-            app:destination="@id/fragment_editar_entrega3" />
-    </fragment>
 
 
-    <fragment
-        android:id="@+id/fragment_editar_entrega3"
-        android:name="pt.ipg.app_entregas.EditarEntregaFragment"
-        android:label="@string/editar_livro_label"
-        tools:layout="@layout/fragment_editar_entrega" >
-        <action
-            android:id="@+id/action_fragment_editar_entrega3_to_ListaEntregasFragment"
-            app:destination="@id/ListaEntregasFragment" />
-    </fragment>
     <fragment
         android:id="@+id/listaClienteFragment"
         android:name="pt.ipg.app_entregas.ListaClienteFragment"
@@ -53,6 +28,9 @@
         <action
             android:id="@+id/action_listaClienteFragment_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
+        <action
+            android:id="@+id/action_listaClienteFragment_to_eliminarClienteFragment"
+            app:destination="@id/eliminarClienteFragment" />
     </fragment>
     <fragment
         android:id="@+id/editarClienteFragment"
@@ -62,5 +40,22 @@
         <action
             android:id="@+id/action_editarClienteFragment_to_listaClienteFragment"
             app:destination="@id/listaClienteFragment" />
+        <argument
+            android:name="cliente"
+            app:argType="pt.ipg.app_entregas.Cliente"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/eliminarClienteFragment"
+        android:name="pt.ipg.app_entregas.EliminarClienteFragment"
+        android:label="fragment_eliminar_cliente"
+        tools:layout="@layout/fragment_eliminar_cliente" >
+        <action
+            android:id="@+id/action_eliminarClienteFragment_to_listaClienteFragment"
+            app:destination="@id/listaClienteFragment" />
+        <argument
+            android:name="cliente"
+            app:argType="pt.ipg.app_entregas.Cliente" />
     </fragment>
 </navigation>

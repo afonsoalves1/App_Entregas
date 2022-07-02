@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EliminarClienteFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete_client"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FF0404" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nome_cliente"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#0027FF" />
+
+        <TextView
+            android:id="@+id/textViewNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Afonso Alves"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contacto_cliente"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#0027FF" />
+
+        <TextView
+            android:id="@+id/textViewContato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="966666666"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/idade_cliente"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#0027FF" />
+
+        <TextView
+            android:id="@+id/textViewidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="23"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/morada_cliente"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#0027FF" />
+
+        <TextView
+            android:id="@+id/textViewmorada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rua guarda ipg" />
+    </LinearLayout>
+</FrameLayout>

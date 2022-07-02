@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import pt.ipg.app_entregas.databinding.FragmentListaClientesBinding
 
 
-class ListaClienteFragment : Fragment() {
+class ListaClienteFragment : Fragment() ,  LoaderManager.LoaderCallbacks<Cursor> {
 
 
     var clienteSelecionado :Cliente? = null
@@ -29,17 +29,16 @@ class ListaClienteFragment : Fragment() {
 
     private var adapterClientes : AdapterClientes? = null
 
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lista_clientes, container, false)
+
+        _binding = FragmentListaClientesBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,7 +47,7 @@ class ListaClienteFragment : Fragment() {
         LoaderManager.getInstance(this).initLoader(ID_LOADER_CLIENTE, null, this)
 
         adapterClientes = AdapterClientes(this)
-        binding.recyclerViewClientes.adapter = adapterClientes
+        binding .recyclerViewClientes.adapter = adapterClientes
         binding.recyclerViewClientes.layoutManager = LinearLayoutManager(requireContext())
 
         val activity = activity as MainActivity
@@ -83,19 +82,19 @@ class ListaClienteFragment : Fragment() {
     fun processaOpcaoMenu(item: MenuItem) : Boolean =
         when(item.itemId) {
             R.id.action_inserir -> {
-                val acao = ListaClienteFragmentDire.actionSecondFragmentToEditarClienteFragment()
+                val acao = ListaClienteFragmentDirections.actionListaClienteFragmentToEditarClienteFragment()
                 findNavController().navigate(acao)
                 (activity as MainActivity).atualizaTitulo(R.string.insere_cliente)
                 true
             }
             R.id.action_alterar -> {
-                val acao = SecondFragmentDirections.actionSecondFragmentToEditarClienteFragment(clienteSelecionado)
+                val acao = ListaClienteFragmentDirections.actionListaClienteFragmentToEditarClienteFragment(clienteSelecionado)
                 findNavController().navigate(acao)
                 (activity as MainActivity).atualizaTitulo(R.string.editar_cliente)
                 true
             }
             R.id.action_guardar -> {
-                val acao = SecondFragmentDirections.actionSecondFragmentToEliminarClienteFragment(clienteSelecionado!!)
+                val acao = ListaClienteFragmentDirections.actionListaClienteFragmentToEliminarClienteFragment(clienteSelecionado!!)
                 findNavController().navigate(acao)
                 (activity as MainActivity).atualizaTitulo(R.string.apagar_cliente)
                 true

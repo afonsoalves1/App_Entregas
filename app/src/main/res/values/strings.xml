@@ -3,7 +3,8 @@
     <string name="title_activity_main">activity_main</string>
     <!-- Strings used for fragments for navigation -->
     <string name="menu_principal_label">Menu principas</string>
-    <string name="lista_entregas_label">Entregas</string>
+    <string name="lista_entregas_label">Menu principas</string>
+
     <string name="clientes">Cliente</string>
     <string name="entregas">Entrega</string>
     <string name="previous">Previous</string>
@@ -24,6 +25,19 @@
     <string name="insere_cliente">Insere Cliente</string>
     <string name="editar_cliente">Editar Cliente</string>
     <string name="apagar_cliente">Apagar Cliente</string>
+
+    <string name="done">Feito</string>
+    <string name="erro">Erro</string>
+
+    <string name="delete_client">Eliminar Cliente</string>
+    <string name="nome_cliente">Nome Cliente</string>
+    <string name="contacto_cliente">Contacto Cliente</string>
+    <string name="morada_cliente">Morada Cliente</string>
+    <string name="idade_cliente">Idade Cliente</string>
+
+    <string name="sure">Sure</string>
+
+
 
 
 </resources>
