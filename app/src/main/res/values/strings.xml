@@ -2,61 +2,61 @@
     <string name="app_name">App_Entregas</string>
     <string name="title_activity_main">activity_main</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="menu_principal_label">Menu principas</string>
-    <string name="lista_entregas_label">Menu principas</string>
+    <string name="menu_principal_label">Main Menu</string>
+    <string name="lista_entregas_label">Main Menu</string>
 
-    <string name="clientes">Cliente</string>
-    <string name="entregas">Entrega</string>
-    <string name="produtos">Produto</string>
+    <string name="clientes">Client</string>
+    <string name="entregas">Delivery</string>
+    <string name="produtos">Product</string>
     <string name="previous">Previous</string>
 
-    <string name="cliente">Nome Cliente</string>
-    <string name="contacto">Contacto</string>
-    <string name="idade">Idade</string>
-    <string name="morada">Morada</string>
+    <string name="cliente">Client Name</string>
+    <string name="contacto">Contact</string>
+    <string name="idade">Age</string>
+    <string name="morada">Household</string>
 
-    <string name="campo_obrigatorio">Campo Obrigatorio</string>
+    <string name="campo_obrigatorio">Required field</string>
 
-    <string name="save">Guardar</string>
-    <string name="cancel">Cancelar</string>
-    <string name="create">Criar</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="create">Create</string>
     <string name="update">Update</string>
-    <string name="delete">Apagar</string>
+    <string name="delete">Delete</string>
 
-    <string name="insere_cliente">Insere Cliente</string>
-    <string name="editar_cliente">Editar Cliente</string>
-    <string name="apagar_cliente">Apagar Cliente</string>
+    <string name="insere_cliente">Insert Customer</string>
+    <string name="editar_cliente">Edit Customer</string>
+    <string name="apagar_cliente">Delete Customer</string>
 
-    <string name="done">Feito</string>
+    <string name="done">Done</string>
     <string name="erro">Erro</string>
 
-    <string name="delete_client">Eliminar Cliente</string>
-    <string name="nome_cliente">Nome Cliente</string>
-    <string name="contacto_cliente">Contacto Cliente</string>
-    <string name="morada_cliente">Morada Cliente</string>
-    <string name="idade_cliente">Idade Cliente</string>
+    <string name="delete_client">Delete Customer</string>
+    <string name="nome_cliente">Name Client</string>
+    <string name="contacto_cliente">Customer Contact</string>
+    <string name="morada_cliente">Customer Address</string>
+    <string name="idade_cliente">Customer Age</string>
 
     <string name="sure">Sure</string>
 
-    <string name="produto">Produto</string>
-    <string name="descricao">Descrição</string>
+    <string name="produto">Product</string>
+    <string name="descricao">Description</string>
 
-    <string name="insere_produto">Insere Produto</string>
-    <string name="editar_produto">Editar Produto</string>
-    <string name="eliminar_produto">Eliminar Produto</string>
-    <string name="nome_produto">Nome Produto</string>
-    <string name="descricao_produto">Descricao Produto</string>
+    <string name="insere_produto">Insert Customer</string>
+    <string name="editar_produto">Edit Customer</string>
+    <string name="eliminar_produto">Delete Customer</string>
+    <string name="nome_produto">Name Client</string>
+    <string name="descricao_produto">Product Description</string>
 
-    <string name="delete_produto">Eliminar Produto</string>
-    <string name="apagar_produto">Eliminar Produto</string>
+    <string name="delete_produto">Delete Product</string>
+    <string name="apagar_produto">Delete Product</string>
 
-    <string name="quantidade">Quantidade</string>
-    <string name="data">Data</string>
-    <string name="cliente_entrega">Cliente Entrega</string>
-    <string name="produto_entrega">Produto Entrega</string>
-    <string name="localidade_entrega">Localidade Entrega</string>
+    <string name="quantidade">Quantity</string>
+    <string name="data">Date</string>
+    <string name="cliente_entrega">Customer Delivery</string>
+    <string name="produto_entrega">Product Delivery</string>
+    <string name="localidade_entrega">Delivery Location</string>
 
-    <string name="insere_entrega">Inserir Entrega</string>
-    <string name="editar_entrega">Editar Entrega</string>
+    <string name="insere_entrega">Insert Delivery</string>
+    <string name="editar_entrega">Edit Delivery</string>
 
 </resources>

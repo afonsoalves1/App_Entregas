@@ -223,6 +223,19 @@ class EditarEntregasFragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
 
 
         override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
+            val adapterLocalidade = SimpleCursorAdapter(
+                requireContext(),
+                android.R.layout.simple_list_item_1,
+                data,
+                arrayOf(TabelaBDLocalidade.CAMPO_LOCALIDADE),
+                intArrayOf(android.R.id.text1),
+                0
+            )
+
+            binding.spinnerLocalidade.adapter = adapterLocalidade
+
+            atualizaLocalidadeSelecionada()
+
             val adapterCliente = SimpleCursorAdapter(
                 requireContext(),
                 android.R.layout.simple_list_item_1,
@@ -249,18 +262,7 @@ class EditarEntregasFragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
 
             atualizaProdutoSelecionada()
 
-            val adapterLocalidade = SimpleCursorAdapter(
-                requireContext(),
-                android.R.layout.simple_list_item_1,
-                data,
-                arrayOf(TabelaBDLocalidade.CAMPO_LOCALIDADE),
-                intArrayOf(android.R.id.text1),
-                0
-            )
 
-            binding.spinnerLocalidade.adapter = adapterLocalidade
-
-            atualizaLocalidadeSelecionada()
         }
 
         private fun atualizaClienteSelecionada() {

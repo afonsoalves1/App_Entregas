@@ -391,7 +391,6 @@ class BaseDadosTest {
 
         assertEquals(entrega, entregaBD)
 
-        db.close()
     }
 }
 
