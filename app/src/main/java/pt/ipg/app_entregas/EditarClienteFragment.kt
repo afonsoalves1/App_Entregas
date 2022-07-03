@@ -113,7 +113,7 @@ class EditarClienteFragment : Fragment() {
         }
     }
         private fun alteraCliente(nome: String, contacto: String, idade: String, morada: String): Boolean {
-            val cliente = Cliente(nome, contacto, idade.toInt(), morada)
+            val cliente = Cliente(nome, contacto, idade, morada)
 
             val enderecoClientes = Uri.withAppendedPath(
                 ContentProviderEntregas.ENDERECO_CLIENTE,
@@ -131,7 +131,7 @@ class EditarClienteFragment : Fragment() {
         }
 
         private fun insereCliente(nome: String, contacto: String, idade: String, morada: String): Boolean {
-            val cliente = Cliente(nome, contacto, idade.toInt(), morada)
+            val cliente = Cliente(nome, contacto, idade, morada)
 
             val enderecoClienteInserido = requireActivity().contentResolver.insert(
                 ContentProviderEntregas.ENDERECO_CLIENTE,

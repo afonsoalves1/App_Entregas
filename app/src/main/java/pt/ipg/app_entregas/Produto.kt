@@ -5,8 +5,8 @@ import android.database.Cursor
 import android.provider.BaseColumns
 import java.io.Serializable
 
-data class Produto ( var nome: String,
-                var Descricao: String,
+data class Produto ( var nome: String = "",
+                var Descricao: String = "",
                 var id: Long = -1): Serializable {
     fun toContentValues() : ContentValues {
         val valores = ContentValues()

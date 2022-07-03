@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_MenuPrincipalFragment_to_listaProdutoFragment"
             app:destination="@id/listaProdutoFragment" />
+        <action
+            android:id="@+id/action_MenuPrincipalFragment_to_listaEntregasFragment"
+            app:destination="@id/listaEntregasFragment" />
     </fragment>
 
 
@@ -101,5 +104,31 @@
         <argument
             android:name="produto"
             app:argType="pt.ipg.app_entregas.Produto" />
+    </fragment>
+    <fragment
+        android:id="@+id/editarEntregasFragment"
+        android:name="pt.ipg.app_entregas.EditarEntregasFragment"
+        android:label="fragment_editar_entregas"
+        tools:layout="@layout/fragment_editar_entregas" >
+        <action
+            android:id="@+id/action_editarEntregasFragment_to_listaEntregasFragment"
+            app:destination="@id/listaEntregasFragment" />
+        <argument
+            android:name="entrega"
+            app:argType="pt.ipg.app_entregas.Entrega"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaEntregasFragment"
+        android:name="pt.ipg.app_entregas.ListaEntregasFragment"
+        android:label="fragment_lista_entregas"
+        tools:layout="@layout/fragment_lista_entregas" >
+        <action
+            android:id="@+id/action_listaEntregasFragment_to_editarEntregasFragment"
+            app:destination="@id/editarEntregasFragment" />
+        <action
+            android:id="@+id/action_listaEntregasFragment_to_MenuPrincipalFragment"
+            app:destination="@id/MenuPrincipalFragment" />
     </fragment>
 </navigation>

@@ -4,7 +4,7 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
 
-data class Localidade (var nome: String,
+data class Localidade (var nome: String = "",
                   var id: Long = -1){
 
     fun toContentValues() : ContentValues {

@@ -5,10 +5,10 @@ import android.database.Cursor
 import android.provider.BaseColumns
 import java.io.Serializable
 
-data class Cliente (var nome: String,
-                    var contacto: String,
-                    var idade: Int,
-                    var morada: String,
+data class Cliente (var nome: String = "",
+                    var contacto: String = "",
+                    var idade: String = "",
+                    var morada: String = "",
                     var id: Long = -1 ) : Serializable
 {
     fun toContentValues() : ContentValues{
@@ -33,7 +33,7 @@ data class Cliente (var nome: String,
             val id = cursor.getLong(posId)
             val nome = cursor.getString(posNome)
             val contacto = cursor.getString(posContacto)
-            val idade = cursor.getInt(posIdade)
+            val idade = cursor.getString(posIdade)
             val morada = cursor.getString(posMorada)
 
             return Cliente(nome, contacto,idade, morada,id)

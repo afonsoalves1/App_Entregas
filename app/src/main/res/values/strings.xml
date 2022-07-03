@@ -50,5 +50,13 @@
     <string name="delete_produto">Eliminar Produto</string>
     <string name="apagar_produto">Eliminar Produto</string>
 
+    <string name="quantidade">Quantidade</string>
+    <string name="data">Data</string>
+    <string name="cliente_entrega">Cliente Entrega</string>
+    <string name="produto_entrega">Produto Entrega</string>
+    <string name="localidade_entrega">Localidade Entrega</string>
+
+    <string name="insere_entrega">Inserir Entrega</string>
+    <string name="editar_entrega">Editar Entrega</string>
 
 </resources>
