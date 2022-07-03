@@ -59,4 +59,7 @@
 
     <string name="insere_entrega">Inserir Entrega</string>
     <string name="editar_entrega">Editar Entrega</string>
+    <string name="eliminar_entrega">Eliminar Entrega</string>
+
+    <string name="nome_entrega">Nome Entrega</string>
 </resources>

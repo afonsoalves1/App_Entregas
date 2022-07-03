@@ -130,5 +130,20 @@
         <action
             android:id="@+id/action_listaEntregasFragment_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
+        <action
+            android:id="@+id/action_listaEntregasFragment_to_eliminarEntregaFragment"
+            app:destination="@id/eliminarEntregaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eliminarEntregaFragment"
+        android:name="pt.ipg.app_entregas.EliminarEntregaFragment"
+        android:label="fragment_eliminar_entrega"
+        tools:layout="@layout/fragment_eliminar_entrega" >
+        <action
+            android:id="@+id/action_eliminarEntregaFragment_to_listaEntregasFragment"
+            app:destination="@id/listaEntregasFragment" />
+        <argument
+            android:name="entrega"
+            app:argType="pt.ipg.app_entregas.Entrega" />
     </fragment>
 </navigation>

@@ -58,5 +58,10 @@
 
     <string name="insere_entrega">Insert Delivery</string>
     <string name="editar_entrega">Edit Delivery</string>
+    <string name="eliminar_entrega">Delete Delivery</string>
+
+
+
+
 
 </resources>

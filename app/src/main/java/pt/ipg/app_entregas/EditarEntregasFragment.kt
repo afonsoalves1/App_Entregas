@@ -55,18 +55,62 @@ class EditarEntregasFragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
             if (entrega != null) {
                 binding.editTextQuantidade.setText(entrega!!.quantidade)
                 binding.editTextData.setText(entrega!!.data)
-
+                binding.editTextCliente.setText((entrega!!.cliente).toString())
+                binding.editTextProduto.setText((entrega!!.produto).toString())
             }
         }
-        LoaderManager.getInstance(this).initLoader(ID_LOADER_CLIENTE, null, this)
-        LoaderManager.getInstance(this).initLoader(ID_LOADER_PRODUTO, null, this)
+
         LoaderManager.getInstance(this).initLoader(ID_LOADER_LOCALIDADE, null, this)
     }
 
     companion object {
-        const val ID_LOADER_CLIENTE = 0
-        const val ID_LOADER_PRODUTO = 0
+
         const val ID_LOADER_LOCALIDADE = 0
+    }
+
+    override fun onCreateLoader(id: Int, args: Bundle?):  Loader<Cursor>  =
+
+        CursorLoader(
+            requireContext(),
+            ContentProviderEntregas.ENDERECO_LOCALIDADE,
+            TabelaBDLocalidade.TODAS_COLUNAS,
+            null,
+            null,
+            "${TabelaBDLocalidade.CAMPO_LOCALIDADE}"
+        )
+
+
+
+
+
+    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
+        val adapterLocalidade = SimpleCursorAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            data,
+            arrayOf(TabelaBDLocalidade.CAMPO_LOCALIDADE),
+            intArrayOf(android.R.id.text1),
+            0
+        )
+
+        binding.spinnerLocalidade.adapter = adapterLocalidade
+
+        atualizaLocalidadeSelecionada()
+
+    }
+
+    private fun atualizaLocalidadeSelecionada() {
+        if (entrega == null) return
+        val idLocalidade = entrega!!.localidade.id
+
+        val ultimaLocalidade = binding.spinnerLocalidade.count - 1
+
+        for (i in 0..ultimaLocalidade) {
+            if (binding.spinnerLocalidade.getItemIdAtPosition(i) == idLocalidade) {
+                binding.spinnerLocalidade.setSelection(i)
+                return
+            }
+        }
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean =
@@ -97,18 +141,20 @@ class EditarEntregasFragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
             return
         }
 
-        val idCliente = binding.spinnerCliente.selectedItemId
-        if (idCliente == Spinner.INVALID_ROW_ID) {
-            binding.textViewClienteEntrega.error = getString(R.string.campo_obrigatorio)
-            binding.spinnerCliente.requestFocus()
+        val cliente = binding.editTextCliente.text.toString()
+        if (cliente.isBlank()) {
+            binding.editTextCliente.error = getString(R.string.campo_obrigatorio)
+            binding.editTextCliente.requestFocus()
             return
         }
-        val idProduto = binding.spinnerProduto.selectedItemId
-        if (idProduto == Spinner.INVALID_ROW_ID) {
-            binding.textViewProdutoEntrega.error = getString(R.string.campo_obrigatorio)
-            binding.spinnerProduto.requestFocus()
+        val produto = binding.editTextProduto.text.toString()
+        if (produto.isBlank()) {
+            binding.editTextProduto.error = getString(R.string.campo_obrigatorio)
+            binding.editTextProduto.requestFocus()
             return
         }
+
+
         val idLocalidade = binding.spinnerLocalidade.selectedItemId
         if (idLocalidade == Spinner.INVALID_ROW_ID) {
             binding.textViewLocalidadeEntrega.error = getString(R.string.campo_obrigatorio)
@@ -118,9 +164,9 @@ class EditarEntregasFragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
 
         val entregaGuardado =
             if (entrega == null) {
-                insereEntrega(quantidade, data, idCliente, idProduto, idLocalidade)
+                insereEntrega(quantidade, data, cliente, produto, idLocalidade)
             } else {
-                alteraEntrega(quantidade, data, idCliente, idProduto, idLocalidade)
+                alteraEntrega(quantidade, data, cliente, produto, idLocalidade)
             }
 
         if (entregaGuardado) {
@@ -134,13 +180,13 @@ class EditarEntregasFragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
         }
     }
 
-    private fun alteraEntrega(quantidade: String, data: String, clienteId: Long, produtoId: Long, localidadeId: Long
+    private fun alteraEntrega(quantidade: String, data: String, cliente: String, produto: String, localidadeId: Long
     ): Boolean {
         val entrega = Entrega(
             quantidade.toInt(),
             data,
-            Cliente(id = clienteId),
-            Produto(id = produtoId),
+            cliente,
+            produto,
             Localidade(id = localidadeId)
         )
 
@@ -162,15 +208,15 @@ class EditarEntregasFragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
     private fun insereEntrega(
         quantidade: String,
         data: String,
-        clienteId: Long,
-        produtoId: Long,
+        cliente: String,
+        produto: String,
         localidadeId: Long
     ): Boolean {
         val entrega = Entrega(
             quantidade.toInt(),
             data,
-            Cliente(id = clienteId),
-            Produto(id = produtoId),
+            cliente,
+            produto,
             Localidade(id = localidadeId)
         )
 
@@ -184,136 +230,13 @@ class EditarEntregasFragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
 
 
     private fun voltaListaEntrega() {
-        findNavController().navigate(R.id.action_editarClienteFragment_to_listaClienteFragment)
+        findNavController().navigate(R.id.action_editarEntregasFragment_to_listaEntregasFragment)
     }
 
 
-    override fun onCreateLoader(id: Int, args: Bundle?):  Loader<Cursor>  {
-
-        val cursorLoaderProduto = CursorLoader(
-            requireContext(),
-            ContentProviderEntregas.ENDERECO_PRODUTO,
-            TabelaBDProduto.TODAS_COLUNAS,
-            null,
-            null,
-            "${TabelaBDProduto.CAMPO_NOME_PRODUTO}"
-        )
-
-        val cursorLoaderCliente =  CursorLoader(
-            requireContext(),
-            ContentProviderEntregas.ENDERECO_CLIENTE,
-            TabelaBDCliente.TODAS_COLUNAS,
-            null,
-            null,
-            "${TabelaBDCliente.CAMPO_NOME}"
-    )
-
-        val cursorLoaderLocalidade =  CursorLoader(
-            requireContext(),
-            ContentProviderEntregas.ENDERECO_LOCALIDADE,
-            TabelaBDLocalidade.TODAS_COLUNAS,
-            null,
-            null,
-            "${TabelaBDLocalidade.CAMPO_LOCALIDADE}"
-            )
-        return cursorLoaderLocalidade
-        cursorLoaderCliente
-        cursorLoaderProduto
-}
-
-
-        override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-            val adapterLocalidade = SimpleCursorAdapter(
-                requireContext(),
-                android.R.layout.simple_list_item_1,
-                data,
-                arrayOf(TabelaBDLocalidade.CAMPO_LOCALIDADE),
-                intArrayOf(android.R.id.text1),
-                0
-            )
-
-            binding.spinnerLocalidade.adapter = adapterLocalidade
-
-            atualizaLocalidadeSelecionada()
-
-            val adapterCliente = SimpleCursorAdapter(
-                requireContext(),
-                android.R.layout.simple_list_item_1,
-                data,
-                arrayOf(TabelaBDCliente.CAMPO_NOME),
-                intArrayOf(android.R.id.text1),
-                0
-            )
-
-            binding.spinnerCliente.adapter = adapterCliente
-
-            atualizaClienteSelecionada()
-
-            val adapterProdutos = SimpleCursorAdapter(
-                requireContext(),
-                android.R.layout.simple_list_item_1,
-                data,
-                arrayOf(TabelaBDProduto.CAMPO_NOME_PRODUTO),
-                intArrayOf(android.R.id.text1),
-                0
-            )
-
-            binding.spinnerProduto.adapter = adapterProdutos
-
-            atualizaProdutoSelecionada()
-
-
-        }
-
-        private fun atualizaClienteSelecionada() {
-            if (entrega == null) return
-            val idCliente = entrega!!.cliente.id
-
-            val ultimoCliente = binding.spinnerCliente.count - 1
-
-            for (i in 0..ultimoCliente) {
-                if (binding.spinnerCliente.getItemIdAtPosition(i) == idCliente) {
-                    binding.spinnerCliente.setSelection(i)
-                    return
-                }
-            }
-        }
-
-        private fun atualizaProdutoSelecionada() {
-            if (entrega == null) return
-            val idProduto = entrega!!.produto.id
-
-            val ultimoProduto = binding.spinnerProduto.count - 1
-
-            for (i in 0..ultimoProduto) {
-                if (binding.spinnerProduto.getItemIdAtPosition(i) == idProduto) {
-                    binding.spinnerProduto.setSelection(i)
-                    return
-                }
-            }
-        }
-
-        private fun atualizaLocalidadeSelecionada() {
-            if (entrega == null) return
-            val idLocalidade = entrega!!.localidade.id
-
-            val ultimaLocalidade = binding.spinnerLocalidade.count - 1
-
-            for (i in 0..ultimaLocalidade) {
-                if (binding.spinnerLocalidade.getItemIdAtPosition(i) == idLocalidade) {
-                    binding.spinnerLocalidade.setSelection(i)
-                    return
-                }
-            }
-        }
 
 
         override fun onLoaderReset(loader: Loader<Cursor>) {
-            if (_binding == null) return
-            binding.spinnerCliente.adapter = null
-
-            if (_binding == null) return
-            binding.spinnerProduto.adapter = null
 
             if (_binding == null) return
             binding.spinnerLocalidade.adapter = null

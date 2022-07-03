@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/drawable/ic_baseline_directions_car_24.xml" value="0.1" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/content_activity_main.xml" value="0.16354166666666667" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/fragment_blank.xml" value="0.25" />
@@ -11,6 +12,7 @@
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/fragment_editar_entregas.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/fragment_editar_produtos.xml" value="0.1703125" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/fragment_eliminar_cliente.xml" value="0.2" />
+        <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/fragment_eliminar_entrega.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/fragment_eliminar_produtos.xml" value="0.14990942028985507" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/fragment_inserir_entrega.xml" value="0.25" />
         <entry key="..\:/Users/afons/OneDrive/Ambiente de Trabalho/ProgAvANCADA/App_Entregas/app/src/main/res/layout/fragment_lista_clientes.xml" value="0.21965579710144928" />

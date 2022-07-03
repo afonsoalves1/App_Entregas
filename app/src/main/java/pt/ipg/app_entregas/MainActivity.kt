@@ -83,6 +83,8 @@ class MainActivity : AppCompatActivity() {
             opcaoProcessada = (fragment as ListaEntregasFragment).processaOpcaoMenu(item)
         } else if (fragment is EditarEntregasFragment) {
             opcaoProcessada = (fragment as EditarEntregasFragment).processaOpcaoMenu(item)
+        }else if (fragment is EliminarEntregaFragment) {
+            opcaoProcessada = (fragment as EliminarEntregaFragment).processaOpcaoMenu(item)
         }else {
             opcaoProcessada = false
         }
