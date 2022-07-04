@@ -5,7 +5,7 @@ import android.database.Cursor
 import android.provider.BaseColumns
 import java.io.Serializable
 
-data class Entrega ( var quantidade: Int,
+data class Entrega ( var quantidade: String,
                      var data: String,
                      var cliente:  String,
                      var produto: String,
@@ -45,7 +45,7 @@ data class Entrega ( var quantidade: Int,
 
 
             val id = cursor.getLong(posId)
-            val quantidade = cursor.getInt(posQuantidade)
+            val quantidade = cursor.getString(posQuantidade)
             val data = cursor.getString(posData)
             val cliente = cursor.getString(posCliente)
             val produto = cursor.getString(posProduto)

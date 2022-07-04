@@ -40,7 +40,7 @@ class AdapterEntrega(val fragment: ListaEntregasFragment) : RecyclerView.Adapter
                 textViewData.text = (entrega?.data?: "").toString()
                 textViewCliente.text = (entrega?.cliente ?: "").toString()
                 textViewProduto.text = (entrega?.produto ?: "").toString()
-                textViewLocalidade.text = (entrega?.localidade ?: "").toString()
+                textViewLocalidade.text = (entrega?.localidade?.nome ?: "").toString()
             }
 
         override fun onClick(v: View?) {

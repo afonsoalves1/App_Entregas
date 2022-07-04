@@ -92,6 +92,12 @@ class ListaEntregasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
                 (activity as MainActivity).atualizaTitulo(R.string.editar_entrega)
                 true
             }
+            R.id.action_guardar -> {
+                val acao = ListaEntregasFragmentDirections.actionListaEntregasFragmentToEliminarEntregaFragment(entregaSelecionado!!)
+                findNavController().navigate(acao)
+                (activity as MainActivity).atualizaTitulo(R.string.editar_entrega)
+                true
+            }
 
             else -> false
         }

@@ -53,7 +53,7 @@ class EditarEntregasFragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
             entrega = EditarEntregasFragmentArgs.fromBundle(arguments!!).entrega
 
             if (entrega != null) {
-                binding.editTextQuantidade.setText(entrega!!.quantidade)
+                binding.editTextQuantidade.setText((entrega!!.quantidade).toString())
                 binding.editTextData.setText(entrega!!.data)
                 binding.editTextCliente.setText((entrega!!.cliente).toString())
                 binding.editTextProduto.setText((entrega!!.produto).toString())
@@ -183,7 +183,7 @@ class EditarEntregasFragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
     private fun alteraEntrega(quantidade: String, data: String, cliente: String, produto: String, localidadeId: Long
     ): Boolean {
         val entrega = Entrega(
-            quantidade.toInt(),
+            quantidade,
             data,
             cliente,
             produto,
@@ -191,7 +191,7 @@ class EditarEntregasFragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
         )
 
         val enderecoEntrega = Uri.withAppendedPath(
-            ContentProviderEntregas.ENDERECO_CLIENTE,
+            ContentProviderEntregas.ENDERECO_ENTREGA,
             "${this.entrega!!.id}"
         )
 
@@ -213,7 +213,7 @@ class EditarEntregasFragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
         localidadeId: Long
     ): Boolean {
         val entrega = Entrega(
-            quantidade.toInt(),
+            quantidade,
             data,
             cliente,
             produto,
