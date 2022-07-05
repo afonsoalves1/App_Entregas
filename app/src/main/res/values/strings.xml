@@ -60,6 +60,9 @@
     <string name="editar_entrega">Edit Delivery</string>
     <string name="eliminar_entrega">Delete Delivery</string>
 
+    <string name="lista_produtos">Product List</string>
+    <string name="lista_entrega">Delivery List</string>
+    <string name="lista_cliente">Client List</string>
 
 
 

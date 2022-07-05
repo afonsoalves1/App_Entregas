@@ -47,7 +47,7 @@ class EliminarEntregaFragment : Fragment() {
 
         binding.textViewQuantidadeEntrega.text = (entrega.quantidade).toString()
         binding.textViewDataEntrega.text = entrega.data
-        binding.textViewEntregaLocalidade.text = (entrega.localidade).toString()
+        binding.textViewEntregaLocalidade.text = entrega.localidade.nome
         binding.textViewClienteEntrega.text = entrega.cliente
 
     }

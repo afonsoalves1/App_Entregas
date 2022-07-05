@@ -26,8 +26,8 @@
     <fragment
         android:id="@+id/listaClienteFragment"
         android:name="pt.ipg.app_entregas.ListaClienteFragment"
-        android:label="fragment_lista_clientes"
-        tools:layout="@layout/fragment_lista_clientes" >
+        android:label="@string/lista_cliente"
+        tools:layout="@layout/fragment_lista_clientes">
         <action
             android:id="@+id/action_listaClienteFragment_to_editarClienteFragment"
             app:destination="@id/editarClienteFragment" />
@@ -67,8 +67,8 @@
     <fragment
         android:id="@+id/listaProdutoFragment"
         android:name="pt.ipg.app_entregas.ListaProdutoFragment"
-        android:label="fragment_lista_produto"
-        tools:layout="@layout/fragment_lista_produto" >
+        android:label="@string/lista_produtos"
+        tools:layout="@layout/fragment_lista_produto">
         <action
             android:id="@+id/action_listaProdutoFragment_to_editarProdutoFragment"
             app:destination="@id/editarProdutoFragment" />
@@ -122,8 +122,8 @@
     <fragment
         android:id="@+id/listaEntregasFragment"
         android:name="pt.ipg.app_entregas.ListaEntregasFragment"
-        android:label="fragment_lista_entregas"
-        tools:layout="@layout/fragment_lista_entregas" >
+        android:label="@string/lista_entrega"
+        tools:layout="@layout/fragment_lista_entregas">
         <action
             android:id="@+id/action_listaEntregasFragment_to_editarEntregasFragment"
             app:destination="@id/editarEntregasFragment" />
