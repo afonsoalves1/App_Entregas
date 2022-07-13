@@ -16,14 +16,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/eliminar_entrega"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FF0000" />
 
         <TextView
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/quantidade"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#3F51B5" />
 
         <TextView
             android:id="@+id/textViewQuantidadeEntrega"
@@ -37,7 +39,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/data"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#3F51B5" />
 
         <TextView
             android:id="@+id/textViewDataEntrega"
@@ -51,7 +54,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/localidade_entrega"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#3F51B5" />
 
         <TextView
             android:id="@+id/textViewEntregaLocalidade"
@@ -65,7 +69,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/produto"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#3F51B5" />
 
         <TextView
             android:id="@+id/textViewProdutoEntrega"
@@ -79,7 +84,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cliente"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#3F51B5" />
 
         <TextView
             android:id="@+id/textViewClienteEntrega"

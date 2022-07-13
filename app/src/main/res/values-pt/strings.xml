@@ -61,5 +61,9 @@
     <string name="editar_entrega">Editar Entrega</string>
     <string name="eliminar_entrega">Eliminar Entrega</string>
 
-    <string name="nome_entrega">Nome Entrega</string>
+    <string name="lista_produtos">Lista Produtos</string>
+    <string name="lista_entrega">Lista Entrega</string>
+    <string name="lista_cliente">Lista Cliente</string>
+
+
 </resources>

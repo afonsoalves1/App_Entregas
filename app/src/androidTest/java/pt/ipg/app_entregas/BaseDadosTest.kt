@@ -44,10 +44,11 @@ class BaseDadosTest {
         assertNotEquals(-1, cliente.id)
     }
 
-    @Before
-    fun apagaBaseDados() {
-        appContext().deleteDatabase(BDEntregasOpenHelper.NOME)
-    }
+   // @Before
+    //fun apagaBaseDados() {
+
+      //  appContext().deleteDatabase(BDEntregasOpenHelper.NOME)
+    //}
 
     @Test
     fun consegueAbrirBaseDados() {
@@ -78,6 +79,10 @@ class BaseDadosTest {
         val db = getWritableDatabase()
         insereLocalidade(db, Localidade("Guarda"))
         insereLocalidade(db, Localidade("Coviha"))
+        insereLocalidade(db, Localidade("Lisboa"))
+        insereLocalidade(db, Localidade("Porto"))
+        insereLocalidade(db, Localidade("Viseu"))
+        insereLocalidade(db, Localidade("Castelo Branco"))
 
     }
 
@@ -103,9 +108,9 @@ class BaseDadosTest {
         val localidade2 = Localidade("Guarda" )
         insereLocalidade(db, localidade)
 
-        val entrega = Entrega(5, "13-02-22", "Afonso" ,"Caixas",localidade)
+        val entrega = Entrega("5", "13-02-22", "Afonso" ,"Caixas",localidade)
         insereEntrega(db, entrega)
-        val entrega2 =Entrega(5, "13-02-22", "Antonio" ,"Paletes",localidade2)
+        val entrega2 =Entrega("5", "13-02-22", "Antonio" ,"Paletes",localidade2)
         insereEntrega(db, entrega2)
     }
 
@@ -194,10 +199,10 @@ class BaseDadosTest {
         val localidadeCovilha = Localidade("Covilha" )
         insereLocalidade(db, localidadeCovilha)
 
-        val entrega = Entrega(6,"13-02-22","clienteVasco" , "produtoCaixas", localidadeGuarda  )
+        val entrega = Entrega("6","13-02-22","clienteVasco" , "produtoCaixas", localidadeGuarda  )
         insereEntrega(db, entrega)
 
-        entrega.quantidade = 10
+        entrega.quantidade = "10"
         entrega.data = "14/06/2022"
         entrega.cliente = "clienteAfonso"
         entrega.produto = "produtoArmarios"
@@ -241,7 +246,7 @@ class BaseDadosTest {
         val produto = Produto("Caixas", "Fragil" )
         insereProduto(db, produto)
 
-        val entrega = Entrega (2,"23-06-22", "cliente", "produto", localidade)
+        val entrega = Entrega ("2","23-06-22", "cliente", "produto", localidade)
         insereEntrega(db, entrega)
 
         val registosEliminados = TabelaBDEntrega(db).delete(
@@ -373,7 +378,7 @@ class BaseDadosTest {
         val localidade = Localidade("Lisboa")
         insereLocalidade(db, localidade)
 
-        val entrega = Entrega(2,"24/06/2022", "cliente ","produto", localidade)
+        val entrega = Entrega("2","24/06/2022", "cliente ","produto", localidade)
         insereEntrega(db, entrega)
 
         val cursor = TabelaBDEntrega(db).query(
