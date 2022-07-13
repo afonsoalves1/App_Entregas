@@ -154,7 +154,6 @@ class EditarEntregasFragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
             return
         }
 
-
         val idLocalidade = binding.spinnerLocalidade.selectedItemId
         if (idLocalidade == Spinner.INVALID_ROW_ID) {
             binding.textViewLocalidadeEntrega.error = getString(R.string.campo_obrigatorio)

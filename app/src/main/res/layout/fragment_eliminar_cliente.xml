@@ -53,7 +53,7 @@
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/idade_cliente"
+            android:text="@string/data_nascimento"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="#0027FF" />
 

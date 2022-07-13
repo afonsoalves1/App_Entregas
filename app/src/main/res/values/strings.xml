@@ -12,7 +12,7 @@
 
     <string name="cliente">Client Name</string>
     <string name="contacto">Contact</string>
-    <string name="idade">Age</string>
+    <string name="data_nascimento">Birth Date</string>
     <string name="morada">Household</string>
 
     <string name="campo_obrigatorio">Required field</string>
@@ -34,7 +34,7 @@
     <string name="nome_cliente">Name Client</string>
     <string name="contacto_cliente">Customer Contact</string>
     <string name="morada_cliente">Customer Address</string>
-    <string name="idade_cliente">Customer Age</string>
+    <string name="data_nascimento_cliente">Customer Birth Date</string>
 
     <string name="sure">Sure</string>
 
