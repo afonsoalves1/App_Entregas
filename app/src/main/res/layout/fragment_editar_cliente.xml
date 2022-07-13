@@ -23,7 +23,8 @@
                 android:id="@+id/editTextContacto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/contacto" />
+                android:hint="@string/contacto"
+                android:inputType="number" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -33,7 +34,8 @@
                     android:id="@+id/editTextIdade"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/idade" />
+                    android:hint="@string/idade"
+                    android:inputType="number" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"

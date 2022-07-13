@@ -17,7 +17,8 @@
             android:id="@+id/editTextQuantidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/quantidade" />
+            android:hint="@string/quantidade"
+            android:inputType="number" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -27,7 +28,8 @@
                 android:id="@+id/editTextData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/data" />
+                android:hint="@string/data"
+                android:inputType="date" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"

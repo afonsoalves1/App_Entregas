@@ -47,7 +47,7 @@ class EliminarClienteFragment : Fragment() {
         cliente = EliminarClienteFragmentArgs.fromBundle(arguments!!).cliente
 
         binding.textViewNome.text = cliente.nome
-        binding.textViewContato.text = cliente.contacto
+        binding.textViewContato.text = (cliente.contacto).toString()
         binding.textViewidade.text = cliente.morada
         binding.textViewmorada.text = cliente.morada
     }

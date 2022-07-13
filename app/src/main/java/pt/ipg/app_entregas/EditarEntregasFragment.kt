@@ -183,7 +183,7 @@ class EditarEntregasFragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
     private fun alteraEntrega(quantidade: String, data: String, cliente: String, produto: String, localidadeId: Long
     ): Boolean {
         val entrega = Entrega(
-            quantidade,
+            quantidade.toInt(),
             data,
             cliente,
             produto,
@@ -213,7 +213,7 @@ class EditarEntregasFragment : Fragment(),LoaderManager.LoaderCallbacks<Cursor> 
         localidadeId: Long
     ): Boolean {
         val entrega = Entrega(
-            quantidade,
+            quantidade.toInt(),
             data,
             cliente,
             produto,

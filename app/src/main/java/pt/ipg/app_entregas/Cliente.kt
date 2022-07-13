@@ -6,8 +6,8 @@ import android.provider.BaseColumns
 import java.io.Serializable
 
 data class Cliente (var nome: String = "",
-                    var contacto: String = "",
-                    var idade: String = "",
+                    var contacto: Int ,
+                    var idade: Int ,
                     var morada: String = "",
                     var id: Long = -1 ) : Serializable
 {
@@ -32,8 +32,8 @@ data class Cliente (var nome: String = "",
 
             val id = cursor.getLong(posId)
             val nome = cursor.getString(posNome)
-            val contacto = cursor.getString(posContacto)
-            val idade = cursor.getString(posIdade)
+            val contacto = cursor.getInt(posContacto)
+            val idade = cursor.getInt(posIdade)
             val morada = cursor.getString(posMorada)
 
             return Cliente(nome, contacto,idade, morada,id)
