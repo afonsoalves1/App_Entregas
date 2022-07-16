@@ -26,7 +26,9 @@ class TabelaBDEntrega (db: SQLiteDatabase) : TabelaBD(db, NOME) {
         orderBy: String?
     ): Cursor {
         val queryBuilder = SQLiteQueryBuilder()
-        queryBuilder.tables = "$NOME INNER JOIN ${TabelaBDLocalidade.NOME} ON ${TabelaBDLocalidade.CAMPO_ID} = $CAMPO_LOCALIDADE_ID "
+        queryBuilder.tables = "$NOME INNER JOIN ${TabelaBDCliente.NOME} ON ${TabelaBDCliente.CAMPO_ID} = $CAMPO_CLIENTE_ID,"+
+                "${TabelaBDProduto.NOME} ON ${TabelaBDProduto.CAMPO_ID} = $CAMPO_PRODUTO_ID,"+
+                "${TabelaBDLocalidade.NOME} ON ${TabelaBDLocalidade.CAMPO_ID} = $CAMPO_LOCALIDADE_ID "
                 return queryBuilder.query(db, columns, selection, selectionArgs, groupBy, having, orderBy)
     }
 
@@ -43,6 +45,7 @@ class TabelaBDEntrega (db: SQLiteDatabase) : TabelaBD(db, NOME) {
 
         val TODAS_COLUNAS = arrayOf(
             CAMPO_ID, CAMPO_QUANTIDADE, CAMPO_DATA, CAMPO_CLIENTE_ID,
-            CAMPO_PRODUTO_ID, CAMPO_LOCALIDADE_ID, TabelaBDLocalidade.CAMPO_LOCALIDADE)
+            CAMPO_PRODUTO_ID, CAMPO_LOCALIDADE_ID, TabelaBDCliente.CAMPO_NOME, TabelaBDCliente.CAMPO_CONTACTO, TabelaBDCliente.CAMPO_IDADE, TabelaBDCliente.CAMPO_MORADA
+        , TabelaBDProduto.CAMPO_NOME_PRODUTO,TabelaBDProduto.CAMPO_DESCRICAO_PRODUTO, TabelaBDLocalidade.CAMPO_LOCALIDADE)
     }
 }
