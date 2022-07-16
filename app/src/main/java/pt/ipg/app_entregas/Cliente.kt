@@ -7,7 +7,7 @@ import java.io.Serializable
 
 data class Cliente (var nome: String = "",
                     var contacto: Int ,
-                    var idade: Int ,
+                    var data_nascimento: String = "" ,
                     var morada: String = "",
                     var id: Long = -1 ) : Serializable
 {
@@ -16,7 +16,7 @@ data class Cliente (var nome: String = "",
 
         valores.put(TabelaBDCliente.CAMPO_NOME, nome)
         valores.put(TabelaBDCliente.CAMPO_CONTACTO, contacto )
-        valores.put(TabelaBDCliente.CAMPO_IDADE, idade )
+        valores.put(TabelaBDCliente.CAMPO_IDADE, data_nascimento )
         valores.put(TabelaBDCliente.CAMPO_MORADA, morada )
 
         return valores
@@ -33,7 +33,7 @@ data class Cliente (var nome: String = "",
             val id = cursor.getLong(posId)
             val nome = cursor.getString(posNome)
             val contacto = cursor.getInt(posContacto)
-            val idade = cursor.getInt(posIdade)
+            val idade = cursor.getString(posIdade)
             val morada = cursor.getString(posMorada)
 
             return Cliente(nome, contacto,idade, morada,id)

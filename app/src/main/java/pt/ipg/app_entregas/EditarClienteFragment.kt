@@ -47,7 +47,7 @@ class EditarClienteFragment : Fragment() {
 
             if (cliente != null) {
                 binding.editTextNome.setText(cliente!!.nome)
-                binding.editTextContacto.setText((cliente!!.contacto).toString())
+                binding.editTextContacto.setText(cliente!!.contacto)
                 binding.editTextIdade.setText((cliente!!.idade).toString())
                 binding.editTextMorada.setText(cliente!!.morada)
             }
